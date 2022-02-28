@@ -166,7 +166,7 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-            <div class="row" style="overflow:scroll;height: 88vh;">
+            <div class="row" style="overflow:scroll;height: 88vh">
               <div class="col-md-12 col-sm-12 ">
                 <h1><center>@yield('titulo')</center></h1>
                 @yield('contenido')

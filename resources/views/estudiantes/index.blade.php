@@ -10,7 +10,7 @@ Estudiantes Registrados
     }
   </style>
 
-<table id="datatable-buttons" class="table table-striped">
+<table  id="datatable" class="table table-striped">
     <thead>
     <tr>
         <th scope="col" style="text-align: center">Identidad</th>
