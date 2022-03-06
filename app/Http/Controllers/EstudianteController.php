@@ -27,7 +27,7 @@ class EstudianteController extends Controller
         ->get();
         return view('estudiantes/index')->with('estudiantes',$estudiante);
     }
-
+ 
     public function show($id){
         abort_if(Gate::denies('estudiante.show'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
         $estudiante = User::findOrFail($id);
