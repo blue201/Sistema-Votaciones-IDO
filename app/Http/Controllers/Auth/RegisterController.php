@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Curso;
+use App\Models\Grupo;
+use App\Models\Jornada;
+use App\Models\Modalidad;
+use App\Models\Estudiante;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -54,6 +59,10 @@ class RegisterController extends Controller
             'user' => ['required', 'string', 'max:20', 'unique:users'],
             'identidad' => ['required', 'string', 'numeric', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'modalidad' => ['required', 'exists:modalidads,id'],
+            'cursos' => ['required',  'exists:cursos,id'],
+            'grupos' => ['required',  'exists:grupos,id'],
+            'jornadas' => ['required',  'exists:jornadas,id'],
         ]);
     }
 
@@ -65,12 +74,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $usuario = User::create([
             'name' => $data['name'],
             'user' => $data['user'],
             'identidad' => $data['identidad'],
             'password' => Hash::make($data['password']),
         ])->assignRole('Estudiante');
+
+        Estudiante::create([
+            'id_modalidad' => $data['modalidad'],
+            'id_cursos' => $data['cursos'],
+            'id_grupos' => $data['grupos'],
+            'id_jornadas' => $data['jornadas'],
+            'id_user' => $usuario->id,
+        ]);
+
+        return $usuario;
+    }
+
+    public function showRegistrationForm()
+    {
+        $cursos=Curso::all();
+        $modalidads=Modalidad::all();
+        $grupos=Grupo::all();
+        $jornadas=Jornada::all();
+        return view('auth.register', compact('cursos','modalidads','grupos','jornadas'));
     }
 
 }

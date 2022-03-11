@@ -8,39 +8,40 @@ Profesores Registrados
     #prueba {
         overflow:auto;
     }
+    .dt-buttons{
+            float: right !important;
+    }
   </style>
 
 @can('profesor.create')
 <a type="buttom" href="{{route('profesor.nuevo')}}" class="btn btn-primary">Nuevo Profesor</a>
 @endcan
 
-<table  id="datatable" class="table table-striped">
+<table  id="datatable-buttons" class="table table-striped">
     <thead>
     <tr>
         <th scope="col" style="text-align: center">Identidad</th>
         <th scope="col" style="text-align: center">Nombre</th>
         <th scope="col" style="text-align: center">Usuario</th>
-        <th scope="col" style="text-align: center">Fecha de Registro</th>
-        <th scope="col" style="text-align: center">Detalles</th>
-        <th scope="col" style="text-align: center">Editar</th>
+        <th scope="col" style="text-align: center">Cargo</th>
+        <th scope="col" style="text-align: center">Funcion</th>
+        <th scope="col" style="text-align: center">Accion</th>
     </tr>
     </thead>
 
     <tbody>
     @foreach ($profesors as $profesor)
         <tr>
-            <td>{{$profesor->identidad}}</td>
-            <td>{{$profesor->name}}</td>
-            <td>{{$profesor->user}}</td>
-            <td>{{$profesor->created_at}}</td>
-            <td>
-                @can('profesor.show')
-                    
-                @endcan
-            </td>
+            <td>{{$profesor->user->identidad}}</td>
+            <td>{{$profesor->user->name}}</td>
+            <td>{{$profesor->user->user}}</td>
+            <td>{{$profesor->cargo->descripcion}}</td>
+            <td>{{$profesor->funcion}}</td>
             <td>
                 @can('profesor.edit')
-                    
+                    <center>
+                        <a type="button" class="btn btn-danger" href="{{route('profesor.edit',['id'=>$profesor->id])}}">Editar</a>
+                    </center>
                 @endcan
             </td>
         </tr>
