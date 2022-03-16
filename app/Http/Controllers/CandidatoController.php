@@ -15,7 +15,6 @@ class CandidatoController extends Controller
         $data = [
             'candidatos'=> $candidatos,
         ];
-
         return view('formularios/index',$data);
     }
 
@@ -24,14 +23,13 @@ class CandidatoController extends Controller
     {
         abort_if(Gate::denies('candidato.create'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
         $roles = DB::table('roles')->get();
-        return view('formularios/regcandidato')->with('roles',$roles);
+        $cargo_politicos = DB::table('cargo_politicos')->get();
+        return view('formularios/regcandidato')->with('roles',$roles)->with('cargo_politicos',$cargo_politicos);
     }
 
     public function store(Request $request)
     {
         
-       
-
         $candidato = new Candidato();
         $candidato ->id = $request->id;
         $candidato ->name = $request->name;

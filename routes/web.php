@@ -4,12 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\FormularioController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\CatalogoController;
-
-=======
 use App\Http\Controllers\CandidatoController;
->>>>>>> Stashed changes
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,22 +45,14 @@ Route::middleware("auth")->group(function () {
     Route::get('cargo', [CatalogoController::class, 'cargoindex'])->name('cargo');
     Route::get('curso', [CatalogoController::class, 'cursoindex'])->name('curso');
     Route::get('grupo', [CatalogoController::class, 'grupoindex'])->name('grupo');
-    Route::get('modalidad', [CatalogoController::class, 'modalidadindex'])->name('modalidad');
+    Route::get('modalidad', [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     xcx::class, 'modalidadindex'])->name('modalidad');
     Route::get('jornada', [CatalogoController::class, 'jornadaindex'])->name('jornada');
 
-<<<<<<< Updated upstream
     Route::post('cargo', [CatalogoController::class, 'cargostore'])->name('cargo');
     Route::post('curso', [CatalogoController::class, 'cursostore'])->name('curso');
     Route::post('grupo', [CatalogoController::class, 'grupostore'])->name('grupo');
     Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidad');
     Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada');
-=======
-    Route::post('cargo', [CatalogoController::class, 'cargostore'])->name('cargostore');
-    Route::post('curso', [CatalogoController::class, 'cursostore'])->name('cursostore');
-    Route::post('grupo', [CatalogoController::class, 'grupostore'])->name('grupostore');
-    Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidadstore');
-    Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornadastore');
->>>>>>> Stashed changes
 });
 
 

@@ -116,8 +116,15 @@ Registro de Nuevos Candidatos
 								
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align">Puesto</label>
-											<div class="col-md-6 col-sm-6 ">
-											 <input type="text" name="puesto" placeholder="Ingrese Puesto" class="form-control ">
+											<div  class="col-md-6 col-sm-6 " >
+												<select name="puesto" id="puesto" class="form-control @error('puesto') is-invalid @enderror">
+													@foreach ($cargo_politicos as $c)
+														@if ($c->id >0)
+														<option value="{{$c->nombre}}">{{$c->nombre}}</option>
+														@endif
+													@endforeach
+												</select>
+												
 											</div>
 										</div>
 										
@@ -126,7 +133,7 @@ Registro de Nuevos Candidatos
 											<div  class="col-md-6 col-sm-6 " >
 												<select name="rol" id="rol" class="form-control @error('rol') is-invalid @enderror">
 													@foreach ($roles as $r)
-														@if ($r->id >2)
+														@if ($r->id >1)
 														<option value="{{$r->name}}">{{$r->name}}</option>
 														@endif
 													@endforeach

@@ -22,13 +22,22 @@ Candidatos a Elecciones
   
                         <div class="clearfix"></div>
   
+
+
+                 @foreach ($candidatos as $candidato)
+      
+            
+            
+            
+   
                         <div class="col-md-4 col-sm-4  profile_details">
                           <div class="well profile_view">
                             <div class="col-sm-12">
-                              <h4 class="brief"><i>Candidato</i></h4>
+                              <h4 class="brief"><i>{{$candidato->name}}</i></h4>
                               <div class="left col-sm-7">
                                 <h2>Nicole Flores</h2>
-                                <p><strong>Cargo Institucional: </strong> Orientador / UI. </p>
+                                <p><strong>Cargo Institucional: </p>
+                                </strong> {{$candidato->puesto}} 
                                 <ul class="list-unstyled">
                                   <li><i class="fa fa-building"></i> Direccion: </li>
                                   <li><i class="fa fa-phone"></i> Telefono #: </li>
@@ -40,14 +49,7 @@ Candidatos a Elecciones
                             </div>
                             <div class=" bottom text-center">
                               <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
+                                
                               </div>
                               <div class=" col-sm-6 emphasis">
                                 <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
@@ -60,6 +62,11 @@ Candidatos a Elecciones
                           </div>
                         </div>
   
+                  @endforeach
+
+
+
+                        <!--
                         <div class="col-md-4 col-sm-4  profile_details">
                           <div class="well profile_view">
                             <div class="col-sm-12">
@@ -363,6 +370,9 @@ Candidatos a Elecciones
                             </div>
                           </div>
                         </div>
+
+
+-->
                     </div>
                   </div>
               </div>

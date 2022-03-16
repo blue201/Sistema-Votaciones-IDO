@@ -19,7 +19,8 @@ class FormularioController extends Controller
     public function create()
     {
         abort_if(Gate::denies('planilla.create'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
-        return view('formularios/candidatos');
+        $candidatos = DB::table('candidatos')->where('puesto', 'Precidente')->get();
+        return view('formularios/candidatos')->with('candidatos',$candidatos);
     }
 
     public function store(Request $request)
