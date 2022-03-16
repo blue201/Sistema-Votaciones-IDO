@@ -19,16 +19,17 @@ class PermissionSeeder extends Seeder
 
         $permissions = [
             'elecciones',
-
             'welcome',
             'estudiante.index',
             'estudiante.show',
-            'planilla',
-            'candidatos',
+            
+            'planilla.index',
+            'candidato.index',
+            'candidato.create',
+            'planilla.create',
 
             'profesor.index',
             'profesor.show',
-
             'profesor.create',
             'profesor.edit',
 

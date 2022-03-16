@@ -70,11 +70,14 @@
                   @endcan
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      @can('planilla')
-                      <li><a href="{{route('planilla')}}">Planilla IDO</a></li>
+                      @can('planilla.index')
+                      <li><a href="{{route('planilla.index')}}">Planilla IDO</a></li>
                       @endcan
-                      @can('candidatos')
-                      <li><a href="{{route('candidatos')}}">Candidatos Eleccion</a></li>
+                      @can('candidato.index')
+                      <li><a href="{{route('candidato.index')}}">Lista de Candidatos</a></li>
+                      @endcan
+                      @can('planilla.create')
+                      <li><a href="{{route('planilla.create')}}">Candidatos Eleccion</a></li>
                       @endcan
                     </ul>
                   </li>
@@ -84,6 +87,7 @@
                   <li><a href="{{route('modalidad')}}">Modalidad</a></li>
                   <li><a href="{{route('jornada')}}">Jornada</a></li>
                 </ul>
+                  </ul>
               </div>
 
             </div>

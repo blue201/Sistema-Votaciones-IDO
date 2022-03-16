@@ -4,8 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\FormularioController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\CatalogoController;
 
+=======
+use App\Http\Controllers\CandidatoController;
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,12 +30,18 @@ Route::middleware("auth")->group(function () {
     
     Route::get('estudiante', [EstudianteController::class, 'index'])->name('estudiante.index');
     Route::get('estudiante/{id}', [EstudianteController::class, 'show'])->name('estudiante.ver')->where('id', '[0-9]+');
-
     Route::get('elecciones', [EstudianteController::class, 'elecciones'])->name('elecciones');
 
-    Route::get('candidatos', [FormularioController::class, 'candidatos'])->name('candidatos');
-
-    Route::get('planilla', [FormularioController::class, 'planilla'])->name('planilla');
+    Route::get('candidatos', [CandidatoController::class, 'index'])->name('candidato.index');
+    Route::get('candidatos/nuevo', [CandidatoController::class, 'create'])->name('candidato.create');
+    Route::post('candidatos', [CandidatoController::class, 'store'])->name('candidato.store');
+    Route::get('candidatos/{id}', [CandidatoController::class, 'show'])->name('candidatos.show');
+    Route::get('candidatos/{id}/edit', [CandidatoController::class, 'edit'])->name('candidatos.edit');
+    Route::put('candidatos/{id}', [CandidatoController::class, 'update'])->name('candidatos.update');
+    Route::delete('candidatos/{id}', [CandidatoController::class, 'destroy'])->name('candidatos.destroy');
+    
+    Route::get('planilla', [FormularioController::class, 'index'])->name('planilla.index');
+    Route::get('planilla/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
 
     Route::get('/', [EstudianteController::class, 'welcome'])->name('welcome');
 
