@@ -78,7 +78,12 @@
                       @endcan
                     </ul>
                   </li>
-                                  </ul>
+                  <li><a href="{{route('cargo')}}">Cargo</a></li>
+                  <li><a href="{{route('curso')}}">Curso</a></li>
+                  <li><a href="{{route('grupo')}}">Grupo</a></li>
+                  <li><a href="{{route('modalidad')}}">Modalidad</a></li>
+                  <li><a href="{{route('jornada')}}">Jornada</a></li>
+                </ul>
               </div>
 
             </div>
