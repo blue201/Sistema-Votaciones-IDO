@@ -7,11 +7,8 @@ Candidatos a Elecciones
         <!-- page content -->
 
             <div class="">
-              
-  
               <div class="clearfix"></div>
-  
-              <div class="row">
+                <div class="row">
                   <div class="x_panel">
                     <div class="x_content">
                         <div class="col-md-12 col-sm-12  text-center">
@@ -24,7 +21,7 @@ Candidatos a Elecciones
   
 
 
-                 @foreach ($candidatos as $candidato)
+                        @foreach ($candidatos as $candidato)
       
             
             
@@ -35,344 +32,38 @@ Candidatos a Elecciones
                             <div class="col-sm-12">
                               <h4 class="brief"><i>{{$candidato->name}}</i></h4>
                               <div class="left col-sm-7">
-                                <h2>Nicole Flores</h2>
-                                <p><strong>Cargo Institucional: </p>
-                                </strong> {{$candidato->puesto}} 
+                                <h2></h2>
+                                
                                 <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Direccion: </li>
-                                  <li><i class="fa fa-phone"></i> Telefono #: </li>
+                                  <li><strong>Cargo Politico:</strong></li>
+                                  <li>{{$candidato->cargoPoli}}</li>
+                                  <li><i class="fa fa-building"></i> Planilla: </li>
+                                  <li>{{$candidato->planilla}}</li>
+                                  <li><i class="fa fa-phone"></i> Identidad #: </li>
+                                  <li> {{$candidato->identidad}} </li>
                                 </ul>
                               </div>
                               <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
+                                <img src="{{asset('images/imgcandidato/1647811737-imagen.jfif')}}" alt="" class="img-circle img-fluid">
                               </div>
                             </div>
                             <div class=" bottom text-center">
                               <div class=" col-sm-6 emphasis">
                                 
                               </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
+                              <div class=" col-sm-2 emphasis">
+                                <!--<button type="button" class="btn btn-success btn-sm"> Propuesta </button>
+                                  -->
+                                  @can('planilla.index')
+                                  <a class="btn btn-primary btn-sm" href="{{route('planilla.index')}}">Planilla</a>
+                                  @endcan
                               </div>
                             </div>
                           </div>
                         </div>
   
-                  @endforeach
+                      @endforeach
 
-
-
-                        <!--
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Candidato</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Pedro Martin</h2>
-                                <p><strong>Cargo Institucional: </strong> Concejero. </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Direccion: </li>
-                                  <li><i class="fa fa-phone"></i> Telefono #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Candidato</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Juan Pablo</h2>
-                                <p><strong>Cargo Institucional: </strong> Docente. </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Direccion: </li>
-                                  <li><i class="fa fa-phone"></i> Telefono #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Digital Strategist</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Nicole Pearson</h2>
-                                <p><strong>About: </strong> Web Designer / UI. </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Address: </li>
-                                  <li><i class="fa fa-phone"></i> Phone #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Digital Strategist</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Nicole Pearsons</h2>
-                                <p><strong>About: </strong> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Address: </li>
-                                  <li><i class="fa fa-phone"></i> Phone #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Digital Strategist</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Nicole Pearson</h2>
-                                <p><strong>About: </strong> Web Designer / UI. </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Address: </li>
-                                  <li><i class="fa fa-phone"></i> Phone #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Digital Strategist</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Nicole Pearson</h2>
-                                <p><strong>About: </strong> Web Designer / UI. </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Address: </li>
-                                  <li><i class="fa fa-phone"></i> Phone #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Digital Strategist</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Nicole Pearson</h2>
-                                <p><strong>About: </strong> Web Designer / UI. </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Address: </li>
-                                  <li><i class="fa fa-phone"></i> Phone #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4  profile_details">
-                          <div class="well profile_view">
-                            <div class="col-sm-12">
-                              <h4 class="brief"><i>Digital Strategist</i></h4>
-                              <div class="left col-sm-7">
-                                <h2>Nicole Pearson</h2>
-                                <p><strong>About: </strong> Web Designer / UI. </p>
-                                <ul class="list-unstyled">
-                                  <li><i class="fa fa-building"></i> Address: </li>
-                                  <li><i class="fa fa-phone"></i> Phone #: </li>
-                                </ul>
-                              </div>
-                              <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/user.png')}}" alt="" class="img-circle img-fluid">
-                              </div>
-                            </div>
-                            <div class=" bottom text-center">
-                              <div class=" col-sm-6 emphasis">
-                                <p class="ratings">
-                                  <a>4.0</a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="fa fa-star"></span></a>
-                                  <a href="#"><span class="far fa-star"></span></a>
-                                </p>
-                              </div>
-                              <div class=" col-sm-6 emphasis">
-                                <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                                  </i> <i class="fa-solid fa-comments"></i> </button>
-                                <button type="button" class="btn btn-primary btn-sm">
-                                  <i class="fa fa-user"> </i> Planilla
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-
--->
                     </div>
                   </div>
               </div>

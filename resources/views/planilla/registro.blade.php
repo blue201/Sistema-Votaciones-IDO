@@ -20,11 +20,24 @@ Registro de Nuevos Candidatos
 								    </div>
 								<div class="x_content left">
 									<br />
-									<form action="{{ route('candidato.store') }}" method="POST" enctype="multipart/form-data"  id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
+									<form action="{{ route('planilla.store') }}" method="POST" enctype="multipart/form-data" id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
 									   @csrf
 
 									   <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Foto</label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" >Nombre de Planilla</label>
+											<div class="col-md-6 col-sm-6 ">
+											    <input name="name" type="text" required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre de Planilla" value="{{old('name')}}"></input>
+												
+												@error('name')
+													<span class="invalid-feedback" role="alert">
+														<i style="color: red">{{ $message }}</i>
+													</span>
+												@enderror
+											</div>
+										</div>
+										
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Logo</label>
 											<div class="col-md-6 col-sm-6 ">
 												
 													<input type="file" name="foto" placeholder="Agregar Foto" id="" accept="image/*">
@@ -35,10 +48,11 @@ Registro de Nuevos Candidatos
 										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Nombre Completo</label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" >Lema </label>
 											<div class="col-md-6 col-sm-6 ">
-												<input name="name" type="text"  required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre Completo" value="{{old('name')}}">
-												@error('name')
+											    <textarea name="lema" type="text" required maxlength="100" class="form-control @error('lema') is-invalid @enderror" placeholder="Escriba su Lema" value="{{old('lema')}}"></textarea>
+												
+												@error('lema')
 													<span class="invalid-feedback" role="alert">
 														<i style="color: red">{{ $message }}</i>
 													</span>
@@ -47,57 +61,30 @@ Registro de Nuevos Candidatos
 										</div>
 										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">No. Identidad </label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Propuesta</label>
 											<div class="col-md-6 col-sm-6 ">
-											  <input name="identidad" type="text" required maxlength="13" pattern="[0-9]{13}" title="Ingrese una identidad valida" 
-            											placeholder="Identidad sin guiones" value="{{old('identidad')}}" class="form-control @error('identidad') is-invalid @enderror">
 												
-														@error('identidad')
-															<span class="invalid-feedback" role="alert">
-															<i style="color: red">{{ $message }}</i>
-															</span>
-														@enderror
-									          									        
+													<input type="file" name="propuesta" placeholder="Agregar propuesta" id="" accept="file/*">
+														
 											</div>
-										  </div>
-										
+										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">Cargo Politico </label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align">Modalidad </label>
 											<div  class="col-md-6 col-sm-6 " >
-												<select name="cargoPoli" id="puesto" class="form-control @error('cargoPoli') is-invalid @enderror">
-													@foreach ($cargo_politicos as $c)
+												<select name="modalidad" id="modalidad" class="form-control @error('modalidad') is-invalid @enderror">
+													@foreach ($modalidads as $c)
 														@if ($c->id >0)
-														<option value="{{$c->nombre}}">{{$c->nombre}}</option>
+														<option value="{{$c->descripcion}}">{{$c->descripcion}}</option>
 														@endif
 													@endforeach
 												</select>
 												
 											</div>
 										</div>
-										
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Seleccione la Plannilla </label>
-											<div  class="col-md-6 col-sm-6 " >
-												<select name="planilla" id="planilla" class="form-control @error('planilla') is-invalid @enderror">
-													@foreach ($planillas as $r)
-														@if ($r->id >0)
-														<option value="{{$r->name}}">{{$r->name}}</option>
-														@endif
-													@endforeach
-												</select>
-												
-											</div>
-    									</div>	
-										
-										
-								
 									
-
-
-
-
-
+											
+										
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-4">

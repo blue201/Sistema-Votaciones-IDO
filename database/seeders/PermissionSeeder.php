@@ -32,6 +32,8 @@ class PermissionSeeder extends Seeder
             'profesor.show',
             'profesor.create',
             'profesor.edit',
+            'planillaa.index',
+            'planillaa.create',
 
         ];
 

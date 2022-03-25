@@ -6,6 +6,7 @@ use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\CandidatoController;
+use App\Http\Controllers\PlanillaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +37,17 @@ Route::middleware("auth")->group(function () {
     Route::get('candidatos/{id}/edit', [CandidatoController::class, 'edit'])->name('candidatos.edit');
     Route::put('candidatos/{id}', [CandidatoController::class, 'update'])->name('candidatos.update');
     Route::delete('candidatos/{id}', [CandidatoController::class, 'destroy'])->name('candidatos.destroy');
+
+    Route::get('planilla', [PlanillaController::class, 'index'])->name('planillaa.index');
+    Route::get('planilla/nuevo', [PlanillaController::class, 'create'])->name('planillaa.create');
+    Route::post('planilla', [PlanillaController::class, 'store'])->name('planilla.store');
+    Route::get('planilla/{id}', [PlanillaController::class, 'show'])->name('planilla.show');
+    Route::get('planilla/{id}/edit', [PlanillaController::class, 'edit'])->name('planilla.edit');
+    Route::put('planilla/{id}', [PlanillaController::class, 'update'])->name('planilla.update');
+    Route::delete('planilla/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
     
-    Route::get('planilla', [FormularioController::class, 'index'])->name('planilla.index');
-    Route::get('planilla/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
+    Route::get('planillas', [FormularioController::class, 'index'])->name('planilla.index');
+    Route::get('planillas/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
 
     Route::get('/', [EstudianteController::class, 'welcome'])->name('welcome');
 

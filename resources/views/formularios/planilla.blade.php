@@ -79,7 +79,8 @@ Planilla de Elecciones Estudiantiles
 
               </div>
               <div class="col-sm-0 text-center">
-                <img class="rounded mx-auto d-block" src="images/user.png" alt="image" />
+              <img src="/storage/images/QjA4cbboOPP5gEmIBsi3dzcowpAGDRrTzRKI2eiw.jpg" width="150" height="150" >
+              <!--<img class="rounded mx-auto d-block" src="images/user.png" alt="image" />-->
               </div>
               <p> 
               </p>

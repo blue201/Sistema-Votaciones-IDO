@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Candidato;
 use Illuminate\Support\Facades\Gate;
+use Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 class CandidatoController extends Controller
 {
     
@@ -22,31 +25,46 @@ class CandidatoController extends Controller
     public function create()
     {
         abort_if(Gate::denies('candidato.create'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
-        $roles = DB::table('roles')->get();
+        $planillas = DB::table('planillas')->get();
         $cargo_politicos = DB::table('cargo_politicos')->get();
-        return view('formularios/regcandidato')->with('roles',$roles)->with('cargo_politicos',$cargo_politicos);
+        return view('formularios/regcandidato')->with('planillas',$planillas)->with('cargo_politicos',$cargo_politicos);
     }
 
     public function store(Request $request)
     {
-        
         $candidato = new Candidato();
+
+        if($request->hasfile('foto') )
+        {
+            
+            //imagen candidato
+            $img = $request->file('foto');
+            $destimg = 'images/imgcandidato/';
+            $imgname = time() . '-' . $img->getClientOriginalName();
+            $uplosucess = $request->file('foto')->move($destimg, $imgname);
+
+
+        
+         
         $candidato ->id = $request->id;
         $candidato ->name = $request->name;
+        $candidato ->foto = $imgname;
         $candidato ->identidad = $request->identidad;
-        $candidato ->user = $request->user;
-        $candidato ->password = $request->password;
-        $candidato ->puesto = $request->puesto;
-        $candidato ->rol = $request->rol;
+        $candidato ->cargoPoli = $request->cargoPoli;
+        $candidato ->planilla = $request->planilla;
         $candidato->save();
 
         return redirect()->route('candidato.index')->with('mensaje','el profesor fue creado exitosamente');
+        }else{return "hola";}
+        
     }
 
   
     public function show($id)
     {
         
+        
+
         return 'show';
     }
 
