@@ -20,6 +20,7 @@ Profesores Registrados
 <table  id="datatable-buttons" class="table table-striped">
     <thead>
     <tr>
+        <th scope="col" style="text-align: center">Fecha</th>
         <th scope="col" style="text-align: center">Identidad</th>
         <th scope="col" style="text-align: center">Nombre</th>
         <th scope="col" style="text-align: center">Usuario</th>
@@ -32,6 +33,7 @@ Profesores Registrados
     <tbody>
     @foreach ($profesors as $profesor)
         <tr>
+            <td>{{$profesor->created_at}}</td>
             <td>{{$profesor->user->identidad}}</td>
             <td>{{$profesor->user->name}}</td>
             <td>{{$profesor->user->user}}</td>

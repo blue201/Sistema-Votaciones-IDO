@@ -10,7 +10,7 @@ class CargopoliticoSeeder extends Seeder
     public function run()
     {
         $cargo_politicos = [
-            'Precidente',
+            'Presidente',
             'VicePrecidente',
             'Secretario',
             'Tesorero',

@@ -18,8 +18,11 @@ class CreateCandidatosTable extends Migration
             $table->string('name');
             $table->string('foto');
             $table->string('identidad')->unique();
-            $table->string('cargoPoli');
-            $table->string('planilla');
+            $table->unsignedBigInteger('id_cargo');
+            $table->foreign("id_cargo")->references("id")->on("cargos");
+            $table->unsignedBigInteger('id_planilla');
+            $table->foreign("id_planilla")->references("id")->on("planillas");
+
             $table->rememberToken();
             $table->timestamps();
         });

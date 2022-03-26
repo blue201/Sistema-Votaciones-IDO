@@ -68,7 +68,7 @@ Registro de Nuevos Candidatos
 												<select name="cargoPoli" id="puesto" class="form-control @error('cargoPoli') is-invalid @enderror">
 													@foreach ($cargo_politicos as $c)
 														@if ($c->id >0)
-														<option value="{{$c->nombre}}">{{$c->nombre}}</option>
+														<option value="{{$c->id}}">{{$c->nombre}}</option>
 														@endif
 													@endforeach
 												</select>
@@ -82,7 +82,7 @@ Registro de Nuevos Candidatos
 												<select name="planilla" id="planilla" class="form-control @error('planilla') is-invalid @enderror">
 													@foreach ($planillas as $r)
 														@if ($r->id >0)
-														<option value="{{$r->name}}">{{$r->name}}</option>
+														<option value="{{$r->id}}">{{$r->name}}</option>
 														@endif
 													@endforeach
 												</select>

@@ -36,9 +36,9 @@ Planillas Registrados
             <td>
             <a href="archivo/{{$planilla->propuesta}}" target="blank_" class="btn btn-danger">VerDoc</button>
             </td>
-           <!-- <td>
-            <button type="button" class="btn btn-danger">Ver</button>
-            </td>-->
+           <td>
+            <button type="button" class="btn btn-success">Ver</button>
+            </td>
             <td>
             <button type="button" class="btn btn-danger">Editar</button>
             </td>

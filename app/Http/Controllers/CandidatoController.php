@@ -50,8 +50,8 @@ class CandidatoController extends Controller
         $candidato ->name = $request->name;
         $candidato ->foto = $imgname;
         $candidato ->identidad = $request->identidad;
-        $candidato ->cargoPoli = $request->cargoPoli;
-        $candidato ->planilla = $request->planilla;
+        $candidato ->id_cargo = $request->cargoPoli;
+        $candidato ->id_planilla = $request->planilla;
         $candidato->save();
 
         return redirect()->route('candidato.index')->with('mensaje','el profesor fue creado exitosamente');
