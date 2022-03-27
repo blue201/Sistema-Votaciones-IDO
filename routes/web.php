@@ -33,10 +33,10 @@ Route::middleware("auth")->group(function () {
     Route::get('candidatos', [CandidatoController::class, 'index'])->name('candidato.index');
     Route::get('candidatos/nuevo', [CandidatoController::class, 'create'])->name('candidato.create');
     Route::post('candidatos', [CandidatoController::class, 'store'])->name('candidato.store');
-    Route::get('candidatos/{id}', [CandidatoController::class, 'show'])->name('candidatos.show');
-    Route::get('candidatos/{id}/edit', [CandidatoController::class, 'edit'])->name('candidatos.edit');
-    Route::put('candidatos/{id}', [CandidatoController::class, 'update'])->name('candidatos.update');
-    Route::delete('candidatos/{id}', [CandidatoController::class, 'destroy'])->name('candidatos.destroy');
+    Route::get('candidatos/{id}', [CandidatoController::class, 'show'])->name('candidato.show');
+    Route::get('candidatos/{id}/edit', [CandidatoController::class, 'edit'])->name('candidato.edit');
+    Route::put('candidatos/{id}', [CandidatoController::class, 'update'])->name('candidato.update');
+    Route::delete('candidato/{id}', [CandidatoController::class, 'destroy'])->name('candidato.destroy');
 
     Route::get('planilla', [PlanillaController::class, 'index'])->name('planillaa.index');
     Route::get('planilla/nuevo', [PlanillaController::class, 'create'])->name('planillaa.create');
@@ -48,6 +48,7 @@ Route::middleware("auth")->group(function () {
     
     Route::get('planillas', [FormularioController::class, 'index'])->name('planilla.index');
     Route::get('planillas/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
+    Route::get('planillas/{id}', [FormularioController::class, 'show'])->name('planilla.mostrar');
 
     Route::get('/', [EstudianteController::class, 'welcome'])->name('welcome');
 

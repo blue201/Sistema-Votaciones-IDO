@@ -66,7 +66,7 @@ Planilla de Elecciones Estudiantiles
             </div>
           </div>
         </div>
-
+        @foreach ($data as $data)
 
         <div class="col-md-4 profile_details">
           <div class="well profile_view">
@@ -79,7 +79,7 @@ Planilla de Elecciones Estudiantiles
 
               </div>
               <div class="col-sm-0 text-center">
-              <img src="/storage/images/QjA4cbboOPP5gEmIBsi3dzcowpAGDRrTzRKI2eiw.jpg" width="150" height="150" >
+              <img src="{{asset($data->foto)}}" width="150" height="150" >
               <!--<img class="rounded mx-auto d-block" src="images/user.png" alt="image" />-->
               </div>
               <p> 
@@ -88,7 +88,7 @@ Planilla de Elecciones Estudiantiles
             
             <div class=" bottom text-center">
               <div class=" text-center">
-                <p><strong>Nombre: </strong>Mario Alberto Rodriguez Maldonado</p>
+                <p><strong>Nombre: </strong>{{$data->name}}</p>
               </div>
               
             </div>
@@ -130,6 +130,7 @@ Planilla de Elecciones Estudiantiles
           <div class="col-md-4 profile_details">
             <div class="well profile_view">
               <div class="col-sm-12">
+              
                 <h4 class="brief text-center">VICE PRECIDENTE</h4>
                 <p>
 
@@ -138,7 +139,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                  <img class="rounded mx-auto d-block" src="images/user.png" alt="image" />
+                <img src="{{asset($data->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -146,7 +147,7 @@ Planilla de Elecciones Estudiantiles
               
               <div class=" bottom text-center">
                 <div class=" text-center">
-                  <p><strong>Nombre: </strong>Pedro Alberto Rodriguez Mendoza</p>
+                  <p><strong>Nombre: </strong>{{$data->name}}</p>
                 </div>
                 
               </div>
@@ -164,7 +165,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                  <img class="rounded mx-auto d-block" src="images/user.png" alt="image" />
+                <img src="{{asset($data->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -190,7 +191,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                  <img class="rounded mx-auto d-block" src="images/user.png" alt="image" />
+                <img src="{{asset($data->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -216,7 +217,7 @@ Planilla de Elecciones Estudiantiles
           <div class="col-md-4 profile_details">
             <div class="well profile_view">
               <div class="col-sm-12">
-                <h4 class="brief text-center">FISCAL 1</h4>
+                <h4 class="brief text-center"> FISCAL </h4>
                 <p>
 
                 </p>
@@ -224,7 +225,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                  <img class="rounded mx-auto d-block" src="images/user.png" alt="image" />
+                <img src="{{asset($data->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -242,7 +243,7 @@ Planilla de Elecciones Estudiantiles
           <div class="col-md-4 profile_details">
             <div class="well profile_view right">
               <div class="col-sm-12">
-                <h4 class="brief text-center">VOCAL</h4>
+                <h4 class="brief text-center">VOCAL 1</h4>
                 <p>
 
                 </p>
@@ -250,7 +251,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                  <img class="rounded mx-auto d-block" src="images/user.png" alt="image" />
+                <img src="{{asset($data->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -268,7 +269,7 @@ Planilla de Elecciones Estudiantiles
           <div class="col-md-4 profile_details">
             <div class="well profile_view">
               <div class="col-sm-12">
-                <h4 class="brief text-center">FISCAL 2</h4>
+                <h4 class="brief text-center">VOCAL 2</h4>
                 <p>
 
                 </p>
@@ -276,7 +277,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                  <img class="rounded mx-auto d-block" src="images/user.png" alt="image" />
+                <img src="{{asset($data->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -290,13 +291,42 @@ Planilla de Elecciones Estudiantiles
               </div>
             </div>
           </div>
+
+          <div class="col-md-4 profile_details">
+            <div class="well profile_view right">
+              <div class="col-sm-12">
+                <h4 class="brief text-center">COORDINADOR DE COMISIONES</h4>
+                <p>
+
+                </p>
+                <div class="text-center col-sm-9"> 
+
+                </div>
+                <div class="col-sm-0 text-center">
+                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                </div>
+                <p> 
+                </p>
+              </div>
+              
+              <div class=" bottom text-center">
+                <div class=" text-center">
+                  <p><strong>Nombre: </strong>Juan Alberto Gonzales Maldonado</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
         
       <div class="col-md-15">
         <div class="x_panel">
         </div>
       </div>
-
+      @endforeach
       
       <div class="ln_solid"></div>
         <div class="item form-group">

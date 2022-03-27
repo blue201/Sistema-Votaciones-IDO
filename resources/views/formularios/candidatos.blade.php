@@ -30,13 +30,13 @@ Candidatos a Elecciones
                         <div class="col-md-4 col-sm-4  profile_details">
                           <div class="well profile_view">
                             <div class="col-sm-12">
-                              <h4 class="brief"><i>{{$candidato->name}}</i></h4>
+                              <h4 class="brief"><i>{{$candidato->cargoPoli}}</i></h4>
                               <div class="left col-sm-7">
                                 <h2></h2>
                                 
                                 <ul class="list-unstyled">
-                                  <li><strong>Cargo Politico:</strong></li>
-                                  <li>{{$candidato->cargoPoli}}</li>
+                                  <li><strong>Nombre del Candidato:</strong></li>
+                                  <li>{{$candidato->name}}</li>
                                   <li><i class="fa fa-building"></i> Planilla: </li>
                                   <li>{{$candidato->planilla}}</li>
                                   <li><i class="fa fa-phone"></i> Identidad #: </li>
@@ -44,7 +44,7 @@ Candidatos a Elecciones
                                 </ul>
                               </div>
                               <div class="right col-sm-5 text-center">
-                                <img src="{{asset('images/imgcandidato/1647811737-imagen.jfif')}}" alt="" class="img-circle img-fluid">
+                                <img src="{{asset($candidato->foto)}}" alt="" class="img-circle img-fluid">
                               </div>
                             </div>
                             <div class=" bottom text-center">
@@ -52,10 +52,9 @@ Candidatos a Elecciones
                                 
                               </div>
                               <div class=" col-sm-2 emphasis">
-                                <!--<button type="button" class="btn btn-success btn-sm"> Propuesta </button>
-                                  -->
-                                  @can('planilla.index')
-                                  <a class="btn btn-primary btn-sm" href="{{route('planilla.index')}}">Planilla</a>
+                                
+                                  @can('planilla.mostrar')
+                                  <a class="btn btn-primary btn-sm" href="{{route('planilla.mostrar', ['id'=>$candidato->planilla])}}">Planilla</a>
                                   @endcan
                               </div>
                             </div>

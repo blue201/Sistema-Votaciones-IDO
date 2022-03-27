@@ -27,13 +27,15 @@ class PermissionSeeder extends Seeder
             'candidato.index',
             'candidato.create',
             'planilla.create',
-
+            'candidato.destroy',
             'profesor.index',
             'profesor.show',
             'profesor.create',
             'profesor.edit',
             'planillaa.index',
             'planillaa.create',
+            'planilla.mostrar',
+            
 
         ];
 

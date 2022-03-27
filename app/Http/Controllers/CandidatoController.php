@@ -37,7 +37,7 @@ class CandidatoController extends Controller
         if($request->hasfile('foto') )
         {
             
-            //imagen candidato
+            //imagen candidato 
             $img = $request->file('foto');
             $destimg = 'images/imgcandidato/';
             $imgname = time() . '-' . $img->getClientOriginalName();
@@ -48,14 +48,14 @@ class CandidatoController extends Controller
          
         $candidato ->id = $request->id;
         $candidato ->name = $request->name;
-        $candidato ->foto = $imgname;
+        $candidato ->foto = $destimg . $imgname;
         $candidato ->identidad = $request->identidad;
         $candidato ->cargoPoli = $request->cargoPoli;
         $candidato ->planilla = $request->planilla;
         $candidato->save();
 
         return redirect()->route('candidato.index')->with('mensaje','el profesor fue creado exitosamente');
-        }else{return "hola";}
+        }else{return "error";}
         
     }
 
@@ -65,7 +65,7 @@ class CandidatoController extends Controller
         
         
 
-        return 'show';
+        return $id;
     }
 
    
@@ -85,6 +85,8 @@ class CandidatoController extends Controller
    
     public function destroy($id)
     {
-        return 'destroy';
+        $candidatos = Candidato::find($id);
+        $candidatos->delete();
+        return view('formularios/index')->with('mensaje','el candidato fue eliminado exitosamente');
     }
 }

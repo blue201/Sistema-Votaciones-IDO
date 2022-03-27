@@ -56,6 +56,7 @@ class PlanillaController extends Controller
 
             $planilla ->id = $request->id;
             $planilla ->name = $request->name;
+            //$planilla ->foto =  $destimg . $imgname; guardar ruta e imagen
             $planilla ->foto = $imgname;
             $planilla ->lema = $request->lema;
             $planilla ->modalidad = $request->modalidad;
@@ -66,7 +67,7 @@ class PlanillaController extends Controller
          
         }else
         {
-            return with('mensaje','el profesor fue creado exitosamente');
+            return with('mensaje','error al crear planilla');
         }
      
     }
@@ -91,6 +92,6 @@ class PlanillaController extends Controller
 
     public function destroy($id)
     {
-        //
+        
     }
 }

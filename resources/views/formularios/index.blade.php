@@ -34,10 +34,20 @@ Candidatos Registrados
             <td>{{$candidato->cargoPoli}}</td>
             <td>{{$candidato->created_at}}</td>
             <td>
-            <button type="button" class="btn btn-success">Ver</button>
+            <center>
+            <a href="{{route('candidato.show',['id'=>$candidato->id])}}" type="button" class="btn btn-success">Ver</a>
+            </center>
             </td>
             <td>
-            <button type="button" class="btn btn-danger">Eliminar</button>
+            
+                 <center>
+                 <form  action="{{ route('candidato.destroy',$candidato->id) }}" method="POST">
+                  @method('DELETE')
+                  @csrf
+                  <input type="submit" value="Eliminar">
+                 </form>
+                </center>
+            
             </td>
         </tr>
     @endforeach
