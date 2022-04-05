@@ -31,8 +31,8 @@ Candidatos Registrados
         <tr>
             <td>{{$candidato->name}}</td>
             <td>{{$candidato->identidad}}</td>
-            <td>{{$candidato->cargos->descripcion}}</td>
-            <td>{{$candidato->planillas->name}}</td>
+            <td>{{$candidato->cargopolitico->nombre}}</td>
+            <td>{{$candidato->planilla->name}}</td>
             <td>
             <center>
             <a href="{{route('candidato.show',['id'=>$candidato->id])}}" type="button" class="btn btn-success">Ver</a>
@@ -44,7 +44,7 @@ Candidatos Registrados
                  <form  action="{{ route('candidato.destroy',$candidato->id) }}" method="POST">
                   @method('DELETE')
                   @csrf
-                  <input type="submit" value="Eliminar">
+                  <input class="btn btn-danger" type="submit" value="Eliminar"> 
                  </form>
                 </center>
             

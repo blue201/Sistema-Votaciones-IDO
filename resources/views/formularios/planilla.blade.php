@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Planilla de Elecciones Estudiantiles
+Planilla Presidencial
 @stop
 @section('contenido')
 
@@ -66,7 +66,7 @@ Planilla de Elecciones Estudiantiles
             </div>
           </div>
         </div>
-        @foreach ($data as $data)
+        @foreach ($candidato as $candidato)
 
         <div class="col-md-4 profile_details">
           <div class="well profile_view">
@@ -79,7 +79,7 @@ Planilla de Elecciones Estudiantiles
 
               </div>
               <div class="col-sm-0 text-center">
-              <img src="{{asset($data->foto)}}" width="150" height="150" >
+              <img src="{{asset($candidato->foto)}}" width="150" height="150" >
               <!--<img class="rounded mx-auto d-block" src="images/user.png" alt="image" />-->
               </div>
               <p> 
@@ -88,7 +88,7 @@ Planilla de Elecciones Estudiantiles
             
             <div class=" bottom text-center">
               <div class=" text-center">
-                <p><strong>Nombre: </strong>{{$data->name}}</p>
+                <p><strong>Nombre: </strong>{{$candidato->name}}</p>
               </div>
               
             </div>
@@ -139,7 +139,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                <img src="{{asset($candidato->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -147,7 +147,7 @@ Planilla de Elecciones Estudiantiles
               
               <div class=" bottom text-center">
                 <div class=" text-center">
-                  <p><strong>Nombre: </strong>{{$data->name}}</p>
+                  <p><strong>Nombre: </strong>{{$candidato->name}}</p>
                 </div>
                 
               </div>
@@ -165,7 +165,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                <img src="{{asset($candidato->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -191,7 +191,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                <img src="{{asset($candidato->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -214,7 +214,7 @@ Planilla de Elecciones Estudiantiles
 
 
  <div class="row"> 
-          <div class="col-md-4 profile_details">
+          <div class="col-md-3 profile_details">
             <div class="well profile_view">
               <div class="col-sm-12">
                 <h4 class="brief text-center"> FISCAL </h4>
@@ -225,7 +225,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                <img src="{{asset($candidato->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -240,7 +240,7 @@ Planilla de Elecciones Estudiantiles
             </div>
           </div>
 
-          <div class="col-md-4 profile_details">
+          <div class="col-md-3 profile_details">
             <div class="well profile_view right">
               <div class="col-sm-12">
                 <h4 class="brief text-center">VOCAL 1</h4>
@@ -251,7 +251,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                <img src="{{asset($candidato->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -266,7 +266,7 @@ Planilla de Elecciones Estudiantiles
             </div>
           </div>
 
-          <div class="col-md-4 profile_details">
+          <div class="col-md-3 profile_details">
             <div class="well profile_view">
               <div class="col-sm-12">
                 <h4 class="brief text-center">VOCAL 2</h4>
@@ -277,7 +277,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                <img src="{{asset($candidato->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>
@@ -292,7 +292,7 @@ Planilla de Elecciones Estudiantiles
             </div>
           </div>
 
-          <div class="col-md-4 profile_details">
+          <div class="col-md-3 profile_details">
             <div class="well profile_view right">
               <div class="col-sm-12">
                 <h4 class="brief text-center">COORDINADOR DE COMISIONES</h4>
@@ -303,7 +303,7 @@ Planilla de Elecciones Estudiantiles
 
                 </div>
                 <div class="col-sm-0 text-center">
-                <img src="{{asset($data->foto)}}" width="150" height="150" >
+                <img src="{{asset($candidato->foto)}}" width="150" height="150" >
                 </div>
                 <p> 
                 </p>

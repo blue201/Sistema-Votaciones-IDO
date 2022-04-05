@@ -46,9 +46,9 @@ Route::middleware("auth")->group(function () {
     Route::put('planilla/{id}', [PlanillaController::class, 'update'])->name('planilla.update');
     Route::delete('planilla/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
     
-    Route::get('planillas', [FormularioController::class, 'index'])->name('planilla.index');
-    Route::get('planillas/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
-    Route::get('planillas/{id}', [FormularioController::class, 'show'])->name('planilla.mostrar');
+    Route::get('precidentes', [FormularioController::class, 'index'])->name('planilla.index');
+    Route::get('precidentes/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
+    Route::get('precidentes/{id}', [FormularioController::class, 'show'])->name('planilla.mostrar');
 
     Route::get('/', [EstudianteController::class, 'welcome'])->name('welcome');
 

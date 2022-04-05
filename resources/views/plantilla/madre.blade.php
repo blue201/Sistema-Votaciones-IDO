@@ -77,7 +77,7 @@
                       <li><a href="{{route('candidato.index')}}">Lista de Candidatos</a></li>
                       @endcan
                       @can('planilla.create')
-                      <li><a href="{{route('planilla.create')}}">Lista de Presidentes</a></li>
+                      <li><a  href="{{route('planilla.create')}}">Lista de Presidentes</a></li>
                       @endcan
                       @can('planillaa.index')
                       <li><a href="{{route('planillaa.index')}}">Lista de Planillas</a></li>

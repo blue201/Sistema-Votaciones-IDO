@@ -9,11 +9,19 @@ class Candidato extends Model
 {
     use HasFactory;
 
-    public function planillas(){
+    protected $fillable = [
+        'name',
+        'foto',  
+        'identidad', 
+        'id_cargo',
+        'id_planilla',
+    ];
+
+    public function planilla(){
         return $this->belongsTo(Planilla::class, 'id_planilla', 'id');
     }
 
-    public function cargos(){
-        return $this->belongsTo(Cargo::class, 'id_cargo', 'id');
+    public function cargopolitico(){
+        return $this->belongsTo(CargoPolitico::class, 'id_cargo', 'id');
     }
 }

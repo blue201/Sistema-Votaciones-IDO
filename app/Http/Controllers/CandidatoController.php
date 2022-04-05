@@ -14,11 +14,9 @@ class CandidatoController extends Controller
     
     public function index()
     {
+        abort_if(Gate::denies('candidato.index'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
         $candidatos = Candidato::all();
-        $data = [
-            'candidatos'=> $candidatos,
-        ];
-        return view('formularios/index',$data);
+        return view('formularios/index')->with('candidatos',$candidatos); 
     }
 
    
@@ -28,7 +26,7 @@ class CandidatoController extends Controller
         $planillas = DB::table('planillas')->get();
         $cargo_politicos = DB::table('cargo_politicos')->get();
         return view('formularios/regcandidato')->with('planillas',$planillas)->with('cargo_politicos',$cargo_politicos);
-    }
+    } 
 
     public function store(Request $request)
     {
@@ -39,7 +37,7 @@ class CandidatoController extends Controller
             
             //imagen candidato 
             $img = $request->file('foto');
-            $destimg = 'images/imgcandidato/';
+            $destimg = 'images/imgcandidato/'; 
             $imgname = time() . '-' . $img->getClientOriginalName();
             $uplosucess = $request->file('foto')->move($destimg, $imgname);
 

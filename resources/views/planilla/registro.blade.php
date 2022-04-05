@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Registro de Nuevos Candidatos
+Registro de Nueva Planilla
 @stop
 @section('contenido')
 

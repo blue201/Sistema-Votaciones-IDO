@@ -57,7 +57,7 @@ class ProfesorController extends Controller
         $profesor = Profesor::findorfail($id);
         return view('profesor/edit')->with('roles',$roles)->with('cargos',$cargos)
         ->with('profesor',$profesor);
-    }
+    } 
 
     public function update(Request $request, $id){
         $profesor = Profesor::findOrFail($id);

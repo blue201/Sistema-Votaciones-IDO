@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CargoPolitico extends Model
 {
     use HasFactory;
+    
+    public function candidato(){
+        return $this->hasMany(Candidato::class);
+    }
 }

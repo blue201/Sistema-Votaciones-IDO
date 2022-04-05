@@ -18,9 +18,9 @@ Planillas Registrados
     <thead>
     <tr>
         <th scope="col" style="text-align: center">Nombre</th>
-        <th scope="col" style="text-align: center">Lema</th>
+        <th scope="col" style="text-align: center">Modalidad</th>
         <th scope="col" style="text-align: center">Fec. Registro</th>
-        <th scope="col" style="text-align: center">Documento</th>
+        <th scope="col" style="text-align: center">Propuesta</th>
         <th scope="col" style="text-align: center">Ver</th>
         <th scope="col" style="text-align: center">Editar</th>
         <th scope="col" style="text-align: center">Eliminar</th>
@@ -31,7 +31,7 @@ Planillas Registrados
     @foreach ($planillas as $planilla)
         <tr>
             <td>{{$planilla->name}}</td>
-            <td>{{$planilla->lema}}</td>
+            <td>{{$planilla->modalidad}}</td>
             <td>{{$planilla->created_at}}</td>
             <td>
             <a href="archivo/{{$planilla->propuesta}}" target="blank_" class="btn btn-danger">VerDoc</button>
