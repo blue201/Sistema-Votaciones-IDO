@@ -29,6 +29,8 @@ Route::middleware("auth")->group(function () {
     Route::get('estudiante', [EstudianteController::class, 'index'])->name('estudiante.index');
     Route::get('estudiante/{id}', [EstudianteController::class, 'show'])->name('estudiante.ver')->where('id', '[0-9]+');
     Route::get('elecciones', [EstudianteController::class, 'elecciones'])->name('elecciones');
+    Route::get('elecciones/candidatos/{id}', [EstudianteController::class, 'candidatos'])->name('elecciones.candidatos');
+    Route::post('elecciones', [EstudianteController::class, 'calculo'])->name('calculo');
 
     Route::get('candidatos', [CandidatoController::class, 'index'])->name('candidato.index');
     Route::get('candidatos/nuevo', [CandidatoController::class, 'create'])->name('candidato.create');

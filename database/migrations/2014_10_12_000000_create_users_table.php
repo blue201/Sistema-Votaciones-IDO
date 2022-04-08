@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('user')->unique();
             $table->string('identidad')->unique();
             $table->string('password');
+            $table->boolean('voto')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
