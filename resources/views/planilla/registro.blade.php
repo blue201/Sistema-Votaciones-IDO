@@ -50,7 +50,7 @@ Registro de Nueva Planilla
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Lema </label>
 											<div class="col-md-6 col-sm-6 ">
-											    <textarea name="lema" type="text" required maxlength="100" class="form-control @error('lema') is-invalid @enderror" placeholder="Escriba su Lema" value="{{old('lema')}}"></textarea>
+											    <textarea name="lema" type="text" required maxlength="100" class="form-control @error('lema') is-invalid @enderror" placeholder="Escriba su Lema" >{{old('lema')}}</textarea>
 												
 												@error('lema')
 													<span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@ Registro de Nueva Planilla
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Propuesta</label>
 											<div class="col-md-6 col-sm-6 ">
 												
-													<input type="file" name="propuesta" placeholder="Agregar propuesta" id="" accept="file/*">
+													<input type="file" name="propuesta" placeholder="Agregar propuesta" id="" accept="application/pdf">
 														
 											</div>
 										</div>
@@ -75,10 +75,15 @@ Registro de Nueva Planilla
 												<select name="modalidad" id="modalidad" class="form-control @error('modalidad') is-invalid @enderror">
 													@foreach ($modalidads as $c)
 														@if ($c->id >0)
-														<option value="{{$c->descripcion}}">{{$c->descripcion}}</option>
+														<option value="{{$c->id}}">{{$c->descripcion}}</option>
 														@endif
 													@endforeach
 												</select>
+												@error('modalidad')
+													<span class="invalid-feedback" role="alert">
+														<i style="color: red">{{ $message }}</i>
+													</span>
+												@enderror
 												
 											</div>
 										</div>

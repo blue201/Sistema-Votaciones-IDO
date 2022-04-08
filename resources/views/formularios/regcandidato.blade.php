@@ -20,117 +20,91 @@ Registro de Nuevos Candidatos
 								    </div>
 								<div class="x_content left">
 									<br />
+
+									@if ($errors->any())
+									<div class="alert alert-danger">
+										<ul>
+											@foreach ($errors->all() as $error)
+												<li>{{ $error }}</li>
+											@endforeach
+										</ul>
+									</div>
+								@endif
 									<form action="{{ route('candidato.store') }}" method="POST" enctype="multipart/form-data"  id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
-									   @csrf
+										@csrf
+										<Select required name="planilla" class="form-control">
+											<option style="display: none" value="">Seleccione la planilla</option>
+											@foreach ($planillas as $p)
+												<option value="{{$p->id}}">{{$p->name}}</option>
+											@endforeach
+										</Select>
+										<br><br>
+										@foreach ($cargo_politicos as $c)
+										<div style="float: left; border-top-style: solid;
+										border-right-style: solid;
+										border-bottom-style: solid;
+										border-left-style: solid; width: 28%;margin-left: 2.5%;margin-right: 2.5%;margin-bottom: 5%;">
 
-									   <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Foto</label>
-											<div class="col-md-6 col-sm-6 ">
-												
-													<input type="file" name="foto" placeholder="Agregar Foto" id="" accept="image/*">
+											<div class="col-8" >
+												<input required type="file" value="{{old('seleccionArchivos'.$c->id)}}" id="seleccionArchivos[{{$c->id}}]" name="seleccionArchivos{{$c->id}}" accept="image/*" name="imagen[{{$c->id}}]" style="font-size: 9px">
+												<!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
+												<br>
+													<div id="preview[{{$c->id}}]" style="width: 300px; height: 200px;">
+													<img src="{{asset('images/user.png')}}" alt="">
+													</div>
+											</div>
+											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->nombre}}">
+											<input style="text-align: center" name="nombre{{$c->id}}" value="{{old('nombre'.$c->id)}}" type="text" required maxlength="60" class="form-control" placeholder="Nombre Completo">
+											<input style="text-align: center" name="id{{$c->id}}" value="{{old('id'.$c->id)}}"  type="text" required maxlength="13" pattern="[0-9]{13}" class="form-control" placeholder="Identidad">
+										</div>
+										<script>
+											document.getElementById("seleccionArchivos[{{$c->id}}]").onchange = function(e) {
+											// Creamos el objeto de la clase FileReader
+											let reader = new FileReader();
+
+											// Leemos el archivo subido y se lo pasamos a nuestro fileReader
+											reader.readAsDataURL(e.target.files[0]);
+
+											// Le decimos que cuando este listo ejecute el código interno
+											reader.onload = function(){
+												let preview = document.getElementById('preview[{{$c->id}}]'),
+														image = document.createElement('img');
 														
-													
+												image.src = reader.result;
 												
-											</div>
-										</div>
 
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Nombre Completo</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input name="name" type="text"  required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre Completo" value="{{old('name')}}">
-												@error('name')
-													<span class="invalid-feedback" role="alert">
-														<i style="color: red">{{ $message }}</i>
-													</span>
-												@enderror
-											</div>
-										</div>
-										
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">No. Identidad </label>
-											<div class="col-md-6 col-sm-6 ">
-											  <input name="identidad" type="text" required maxlength="13" pattern="[0-9]{13}" title="Ingrese una identidad valida" 
-            											placeholder="Identidad sin guiones" value="{{old('identidad')}}" class="form-control @error('identidad') is-invalid @enderror">
-												
-														@error('identidad')
-															<span class="invalid-feedback" role="alert">
-															<i style="color: red">{{ $message }}</i>
-															</span>
-														@enderror
-									          									        
-											</div>
-										  </div>
-										
-											
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">Cargo Politico </label>
-											<div  class="col-md-6 col-sm-6 " >
-												<select name="cargoPoli" id="cargoPoli" class="form-control @error('cargoPoli') is-invalid @enderror">
-													@foreach ($cargo_politicos as $c)
-														@if ($c->id >0)
-														<option value="{{$c->id}}">{{$c->nombre}}</option>
-														@endif
-													@endforeach
-												</select>
-												
-											</div>
-										</div>
-										
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Seleccione la Plannilla </label>
-											<div  class="col-md-6 col-sm-6 " >
-												<select name="planilla" id="planilla" class="form-control @error('planilla') is-invalid @enderror">
-													@foreach ($planillas as $r)
-														@if ($r->id >0)
-														<option value="{{$r->id}}">{{$r->name}}</option>
-														@endif
-													@endforeach
-												</select>
-												
-											</div>
-    									</div>	
-										
-										
-								
-									
+												preview.innerHTML = '';
+												preview.append(image);
+											};
+											}
+										</script>
+									@endforeach
+						
 
+									<style>
+										img{
+											width: 250px;
+											height: 200px;
+										}
+									</style>
 
-
-
-
-										<div class="ln_solid"></div>
-										<div class="item form-group">
-											<div class="col-md-6 col-sm-6 offset-md-4">
-												<button class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</button>
-												<button class="btn btn-primary" type="reset">Limpiar</button>
-												<button type="submit"  class="btn btn-success">Registrar</button>
-												
-											</div>
-										</div>
-									</form>
 								</div>
 
 											
+								<div class="ln_solid" style="float: left"></div>
+								<div class="item form-group" style="float: left">
+									<div class="">
+										<button class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</button>
+										<button class="btn btn-primary" type="reset">Limpiar</button>
+										<button type="submit"  class="btn btn-success">Registrar</button>
+										
+									</div>
+								</div>
 
-
-
-
-
-
-
-								
-
-						
-
-
-
+							</form>
 							
 							</div>
 						</div>
-
-				
-
-
 
 					</div>
 				</div>

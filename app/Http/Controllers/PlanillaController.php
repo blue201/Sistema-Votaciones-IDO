@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Planilla;
+use App\Models\Candidato;
 use Validator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -32,13 +33,13 @@ class PlanillaController extends Controller
     
     public function store(Request $request)
     {
-       /* $request->validate([
+        $request->validate([
             'name' => 'required|string|max:40',
             'lema' => 'required|string|max:100',
             'foto' => 'required|image|mimes:jpg,jpej,png,git,svg|max:2048',
-            'propuesta' => 'required|file|mimes:pdf,docx,doc|max:2000',
+            'propuesta' => 'required|file|mimes:pdf',
+            'modalidad' => 'required|exists:modalidads,id|unique:planillas,modalidad'
         ]);
-        */
   
         $planilla = new Planilla();
 
@@ -75,7 +76,9 @@ class PlanillaController extends Controller
     
     public function show($id)
     {
-        //
+        $candidatos = Candidato::where('id_planilla',$id)->get();
+
+        return view('planilla/candidatos')->with('candidatos',$candidatos);
     }
 
     
