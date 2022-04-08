@@ -37,6 +37,10 @@ $suma = 0;
 foreach ($votos as $b) {
     $suma += $b->votos;
 }
+
+if($suma==0){
+$suma=1;
+}
 ?>
 
 <div id="chart">
