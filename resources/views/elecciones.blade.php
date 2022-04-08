@@ -4,6 +4,29 @@ Elecciones
 @stop
 @section('contenido')
 
+<style>
+
+input[type=radio] {
+  border: 1px solid rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  padding: 0.5em;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+}
+
+input[type=radio]:checked {
+  background-size: 9px 9px;
+  background: black;
+  color: black;
+}
+
+input[type=radio]:focus {
+  outline-color: transparent;
+}
+
+</style>
+
 @foreach ($planillas as $p)
     <div style="float: left; border-top-style: solid;
     border-right-style: solid;
@@ -17,8 +40,17 @@ Elecciones
 
     <input style="text-align: center;font-size: 14px;" type="text" class="form-control" disabled value="{{$p->nombre}}">
 
-    <a href="">Propuesta</a>
-    <a href="">Candidatos</a>
+    <a style="float: left;width: 48%" target="blank_" class="btn btn-danger" type="button" href="archivo/{{$p->propuesta}}">Propuesta</a>
+    <a style="float: left;width: 48%" href="" class="btn btn-success" type="button">Candidatos</a>
+
+
+    <div style="width: 100%; height: 100px;float: left;border-top: 1px solid rgb(0, 0, 0);
+    border-right: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-left: 1px solid rgb(0, 0, 0);">
+        <input type="radio" name="muhRadio" value=""/>
+    </div>
+
     </div>
 
 @endforeach
