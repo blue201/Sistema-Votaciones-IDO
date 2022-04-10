@@ -21,8 +21,8 @@ Candidatos Registrados
         <th scope="col" style="text-align: center">Identidad</th>
         <th scope="col" style="text-align: center">Cargo Politico</th>
         <th scope="col" style="text-align: center">Planilla</th>
-        <th scope="col" style="text-align: center">Detalles</th>
         <th scope="col" style="text-align: center">Editar</th>
+        <th scope="col" style="text-align: center">Eliminar</th>
     </tr>
     </thead>
 
@@ -35,18 +35,21 @@ Candidatos Registrados
             <td>{{$candidato->planilla->name}}</td>
             <td>
             <center>
-            <a href="{{route('candidato.show',['id'=>$candidato->id])}}" type="button" class="btn btn-success">Ver</a>
+                <a class="btn btn-warning" href="{{route('candidato.edit',['id'=>$candidato->id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
             </center>
             </td>
             <td>
-            
-                 <center>
-                 <form  action="{{ route('candidato.destroy',$candidato->id) }}" method="POST">
-                  @method('DELETE')
-                  @csrf
-                  <input class="btn btn-danger" type="submit" value="Eliminar"> 
-                 </form>
-                </center>
+            <center>
+                <form action="{{route('candidato.destroy',['id'=>$candidato->id])}}" method="post"> 
+                     @method("delete")
+                     @csrf
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                </form>
+            </center>
             
             </td>
         </tr>

@@ -1,10 +1,10 @@
 @extends('plantilla.madre')
 @section('titulo')
-Registro de Nueva Planilla
+Editar Planilla
 @stop
 @section('contenido')
 
-<!-- page content -->
+<!-- page content  -->
 				<div class="">
 					<div class="clearfix"></div>
 					<div class="row">
@@ -20,18 +20,20 @@ Registro de Nueva Planilla
 								    </div>
 								<div class="x_content left">
 									<br />
-									<form action="{{ route('planilla.store') }}" method="POST" enctype="multipart/form-data" id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
-									   @csrf
+									<form action="{{route('planilla.edit',['id'=>$planilla->id])}}"  method="post"  enctype="multipart/form-data" id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
+									@method("PUT")   
+									@csrf
 
 									   <div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Nombre de Planilla</label>
 											<div class="col-md-6 col-sm-6 ">
-											    <input name="name" type="text" required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre de Planilla" value="{{old('name')}}"></input>
+											    <input name="name" type="text" required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre de Planilla" 
+												value="@if(old('name')){{old('name')}}@else{{$planilla->name}}@endif"></input>
 												
 												@error('name')
 													<span class="invalid-feedback" role="alert">
 														<i style="color: red">{{ $message }}</i>
-													</span>
+													</span> 
 												@enderror
 											</div>
 										</div>
@@ -50,7 +52,8 @@ Registro de Nueva Planilla
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Lema </label>
 											<div class="col-md-6 col-sm-6 ">
-											    <textarea name="lema" type="text" required maxlength="100" class="form-control @error('lema') is-invalid @enderror" placeholder="Escriba su Lema" value="{{old('lema')}}"></textarea>
+											    <textarea name="lema" type="text" required maxlength="100" class="form-control @error('lema') is-invalid @enderror" placeholder="Escriba su Lema" 
+												value="{{old('lema')}}"></textarea>
 												
 												@error('lema')
 													<span class="invalid-feedback" role="alert">
@@ -73,9 +76,10 @@ Registro de Nueva Planilla
 											<label class="col-form-label col-md-3 col-sm-3 label-align">Modalidad </label>
 											<div  class="col-md-6 col-sm-6 " >
 												<select name="modalidad" id="modalidad" class="form-control @error('modalidad') is-invalid @enderror">
+													 <option style="display: none" value="@if(old('modalidad')){{old('modalidad')}}@else{{$planilla->modalidad->id}}@endif" >{{$planilla->modalidad->descripcion}}</option>
 													@foreach ($modalidads as $c)
 														@if ($c->id >0)
-														<option value="{{$c->id}}">{{$c->descripcion}}</option>
+														<option value="{{$c->descripcion}}">{{$c->descripcion}}</option>
 														@endif
 													@endforeach
 												</select>

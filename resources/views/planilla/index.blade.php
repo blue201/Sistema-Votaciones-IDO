@@ -18,10 +18,9 @@ Planillas Registrados
     <thead>
     <tr>
         <th scope="col" style="text-align: center">Nombre</th>
-        <th scope="col" style="text-align: center">Modalidad</th>
+        <th scope="col" style="text-align: center">Lema</th>
         <th scope="col" style="text-align: center">Fec. Registro</th>
         <th scope="col" style="text-align: center">Propuesta</th>
-        <th scope="col" style="text-align: center">Ver</th>
         <th scope="col" style="text-align: center">Editar</th>
         <th scope="col" style="text-align: center">Eliminar</th>
     </tr>
@@ -31,20 +30,35 @@ Planillas Registrados
     @foreach ($planillas as $planilla)
         <tr>
             <td>{{$planilla->name}}</td>
-            <td>{{$planilla->modalidad}}</td>
+            <td>{{$planilla->lema}}</td>
             <td>{{$planilla->created_at}}</td>
             <td>
-            <a href="archivo/{{$planilla->propuesta}}" target="blank_" class="btn btn-danger">VerDoc</button>
+            <center>
+            <a href="archivo/{{$planilla->propuesta}}" target="blank_" class="btn btn-primary">
+            <i class="fas fa-eye"></i>
+            </a>
+            </center>
             </td>
-           <td>
-            <button type="button" class="btn btn-success">Ver</button>
+           
+            <td>
+            <center>
+                <a class="btn btn-warning" href="{{route('planilla.edit',['id'=>$planilla->id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </center>
             </td>
             <td>
-            <button type="button" class="btn btn-danger">Editar</button>
+            <center>
+                <form action="{{route('planilla.destroy',['id'=>$planilla->id])}}" method="post">
+                     @method("delete")
+                     @csrf
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                </form>
+            </center>
             </td>
-            <td>
-            <button type="button" class="btn btn-warning">Eliminar</button>
-            </td>
+            
         </tr>
     @endforeach
     </tbody>
