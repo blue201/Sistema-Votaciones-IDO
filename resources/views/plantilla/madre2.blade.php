@@ -29,45 +29,92 @@
     <link href="{{ asset('css/responsive.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/scroller.bootstrap.min.css') }}" rel="stylesheet">
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
 
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>
 
   </head>
-  <body style="background: #f7f7f7">
+  <body >
+    <div class="container body">
+      <div class="">
 
-    <!-- top navigation -->
-    <div class="top_nav" style="width: 100%">
-      <div class="nav_menu">
-        <nav class="nav navbar-nav">
-          <ul class=" navbar-right">
-            <li style="font-size: 20px" class="nav-item dropdown open" style="float: right;">
-              <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" 
-              data-toggle="dropdown" aria-expanded="false" style="text-align: left">
-              <img src="{{ asset('images/img.png') }}" alt="">{{auth()->user()->name}}
-              </a>
-              <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                  <a class="dropdown-item"  href="javascript:;">
-                    <span class="badge bg-red pull-right">50%</span>
-                    <span>Settings</span>
-                  </a>
-              <a class="dropdown-item"  href="javascript:;">Help</a>
-              <form action="{{route('logout')}}" method="post">
-                @csrf
-                <button class="dropdown-item"  type="submit"><i class="fa fa-sign-out pull-right"></i>Cerras Sesion</button>
-              </form>
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <div class="nav toggle">
+                  <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+                <nav class="nav navbar-nav">
+                <ul class=" navbar-right">
+                  <li style="font-size: 20px" class="nav-item dropdown open" style="float: right;">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" 
+                    data-toggle="dropdown" aria-expanded="false" style="text-align: left">
+                    <img src="{{ asset('images/img.png') }}" alt="">{{auth()->user()->name}}
+                    </a>
+                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
+                        <a class="dropdown-item"  href="javascript:;">
+                          <span class="badge bg-red pull-right">50%</span>
+                          <span>Settings</span>
+                        </a>
+                    <a class="dropdown-item"  href="javascript:;">Help</a>
+                    <form action="{{route('logout')}}" method="post">
+                      @csrf
+                      <button class="dropdown-item"  type="submit"><i class="fa fa-sign-out pull-right"></i>Cerras Sesion</button>
+                    </form>
+                    </div>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        <!-- /top navigation -->
+
+        <style>
+          .btn-nuevo{
+            background: #4792e2;
+          }
+          .btn-editar{
+            background: #92e3ee;
+          }
+          .btn-detalles{
+            background: #7be2c3;
+            content: " Detalles"
+          }
+          .btn-desactivar{
+            background: #f75666;
+          }
+          .btn-regresar{
+            background: #f8b6ed;
+          }
+          .btn-guardar{
+            background: #bae9f0;
+          }
+          .btn-activar{
+            background: #448edd;
+          }
+          .btn-limpiar{
+            background: #aff8bf;
+          }
+        </style>
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="row" style="overflow:scroll;height: 88vh">
+              <div class="col-md-12 col-sm-12 ">
+                <h1><center>@yield('titulo')</center></h1>
+                @yield('contenido')
               </div>
-            </li>
-          </ul>
-        </nav>
+            </div>
+
+            
+
+          </div>
+        </div>
+        <!-- /page content -->
+
       </div>
     </div>
-  <!-- /top navigation -->
-    
-    
 
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>

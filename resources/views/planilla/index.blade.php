@@ -21,6 +21,7 @@ Planillas Registrados
         <th scope="col" style="text-align: center">Lema</th>
         <th scope="col" style="text-align: center">Fec. Registro</th>
         <th scope="col" style="text-align: center">Propuesta</th>
+        <th scope="col" style="text-align: center">Candidatos</th>
         <th scope="col" style="text-align: center">Editar</th>
         <th scope="col" style="text-align: center">Eliminar</th>
     </tr>
@@ -30,14 +31,13 @@ Planillas Registrados
     @foreach ($planillas as $planilla)
         <tr>
             <td>{{$planilla->name}}</td>
-            <td>{{$planilla->lema}}</td>
+            <td>{{$planilla->modalidads->descripcion}}</td>
             <td>{{$planilla->created_at}}</td>
             <td>
-            <center>
-            <a href="archivo/{{$planilla->propuesta}}" target="blank_" class="btn btn-primary">
-            <i class="fas fa-eye"></i>
-            </a>
-            </center>
+            <a href="archivo/{{$planilla->propuesta}}" target="blank_" class="btn btn-danger">VerDoc</button>
+            </td>
+           <td>
+            <a type="button" href="{{Route('planilla.show',['id'=>$planilla->id])}}" class="btn btn-success">Candidatos</a>
             </td>
            
             <td>

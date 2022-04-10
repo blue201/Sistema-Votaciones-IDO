@@ -16,4 +16,8 @@ class Planilla extends Model
     public function planilla(){
         return $this->hasMany(Planilla::class);
     }
+
+    public function modalidads(){
+        return $this->belongsTo(Modalidad::class, 'modalidad', 'id');
+    }
 }
