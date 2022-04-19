@@ -55,6 +55,8 @@
                   <li><a><i class="fa fa-home"></i> Estudiantes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('estudiante.index')}}">Listado de Estudiantes</a></li>
+                      <li><a href="{{route('estudiante.votaron')}}">Estudiantes ya votaron</a></li>
+                      <li><a href="{{route('estudiante.sinvotar')}}">Estudiantes sin votar</a></li>
                     </ul>
                   </li>
                   @endcan

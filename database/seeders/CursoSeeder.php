@@ -14,12 +14,12 @@ class CursoSeeder extends Seeder
     public function run()
     {
         $cursos = [
-            'Septimo',
-            'Octavo',
-            'Noveno',
-            'Decimo',
-            'Undecimo',
-            'Duodecimo',
+            'Séptimo Grado',
+            'Octavo Grado',
+            'Noveno Grado',
+            'Undécimo Grado',
+            'Décimo Grado',
+            'Duodécimo Grado',
         ];
 
         foreach ($cursos as $curso) {

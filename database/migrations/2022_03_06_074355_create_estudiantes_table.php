@@ -20,9 +20,7 @@ class CreateEstudiantesTable extends Migration
             $table->unsignedBigInteger('id_modalidad');
             $table->foreign('id_modalidad')->references('id')->on('modalidads');
             $table->unsignedBigInteger('id_cursos');
-            $table->foreign('id_cursos')->references('id')->on('cursos');
-            $table->unsignedBigInteger('id_grupos');
-            $table->foreign('id_grupos')->references('id')->on('grupos');
+            $table->foreign('id_cursos')->references('id')->on('grupos');
             $table->unsignedBigInteger('id_jornadas');
             $table->foreign('id_jornadas')->references('id')->on('jornadas');
             $table->timestamps();

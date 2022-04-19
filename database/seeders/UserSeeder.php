@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 use App\Models\User;
+use App\Models\Estudiante;
 use Illuminate\Database\Seeder;
+
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -20,144 +23,38 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345678')
         ])->assignRole('Admin');
 
-        User::create([
-            'name' => 'estudiante1',
-            'user' => 'estudiante1',
-            'identidad' => '1111111111111',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
+        $sql = 'SELECT registro__alumnos.Nombres, " ", registro__alumnos.Apellidos,
+        registro__alumnos.RNE_Alumno AS identidad,
+        registro__alumnos.RNE_Alumno AS password,
+        jornada, grado, Nombre_Modalidad
+        FROM idos.registro__alumnos registro__alumnos
+        JOIN idos.matriculas matriculas ON matriculas.RNE_Alumno = registro__alumnos.RNE_Alumno
+        JOIN idos.grupos grupos ON grupos.Id_Grupo = matriculas.Id_Grupo
+        JOIN idos.modalidades modalidades ON modalidades.id = grupos.Id_Modalidad;';
 
-        User::create([
-            'name' => 'estudiante2',
-            'user' => 'estudiante2',
-            'identidad' => '2222222222222',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
+        $estudiantes = DB::select($sql);
 
-        User::create([
-            'name' => 'estudiante3',
-            'user' => 'estudiante3',
-            'identidad' => '3333333333333',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
+        foreach ($estudiantes as $estudiante) {
+            $user = User::create([
+                'name' => $estudiante->Nombres." ".$estudiante->Apellidos,
+                'user' => $estudiante->Nombres." ".$estudiante->Apellidos,
+                'identidad' => $estudiante->identidad,
+                'password' => bcrypt($estudiante->password),
+            ])->assignRole('Estudiante');
 
-        User::create([
-            'name' => 'estudiante4',
-            'user' => 'estudiante4',
-            'identidad' => '4444444444444',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
+            $modalidad = DB::table('modalidads')->where('descripcion',$estudiante->Nombre_Modalidad)->first();
+            $curso = DB::table('cursos')->where('descripcion',$estudiante->grado)->first();
+            $jornada = DB::table('jornadas')->where('descripcion',$estudiante->jornada)->first();
 
-        User::create([
-            'name' => 'estudiante5',
-            'user' => 'estudiante5',
-            'identidad' => '5555555555555',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
+            Estudiante::create([
+                'id_user' => $user->id,
+                'id_modalidad' => $modalidad->id,
+                'id_cursos' => $curso->id,
+                'id_jornadas' => $jornada->id,
+            ]);
+        }
+        
 
-        User::create([
-            'name' => 'estudiante6',
-            'user' => 'estudiante6',
-            'identidad' => '6666666666666',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante7',
-            'user' => 'estudiante7',
-            'identidad' => '7777777777777',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante8',
-            'user' => 'estudiante8',
-            'identidad' => '8888888888888',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante9',
-            'user' => 'estudiante9',
-            'identidad' => '9999999999999',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante10',
-            'user' => 'estudiante10',
-            'identidad' => '1234567890123',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-        User::create([
-            'name' => 'estudiante11',
-            'user' => 'estudiante11',
-            'identidad' => '1111111111119',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante12',
-            'user' => 'estudiante12',
-            'identidad' => '2222222222229',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante13',
-            'user' => 'estudiante13',
-            'identidad' => '3333333333339',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante14',
-            'user' => 'estudiante14',
-            'identidad' => '4444444444449',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante15',
-            'user' => 'estudiante15',
-            'identidad' => '5555555555559',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante16',
-            'user' => 'estudiante16',
-            'identidad' => '6666666666669',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante17',
-            'user' => 'estudiante17',
-            'identidad' => '7777777777779',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante18',
-            'user' => 'estudiante18',
-            'identidad' => '8888888888889',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante19',
-            'user' => 'estudiante19',
-            'identidad' => '9999999999990',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
-
-        User::create([
-            'name' => 'estudiante20',
-            'user' => 'estudiante20',
-            'identidad' => '1234567890124',
-            'password' => bcrypt('12345678')
-        ])->assignRole('Estudiante');
 
     }
 }

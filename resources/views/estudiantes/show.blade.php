@@ -26,11 +26,6 @@ Detalles del empleado
     </div>
 
     <div style="width: 30%;float: left;margin-left: 3%">
-        <label style="width: 20%; float: left;line-height: 35px;" for="">Grupos: </label>
-        <input style="width: 80%; float: left;" class="form-control" value="{{$estudiante->grupo->descripcion}}" disabled>
-    </div>
-
-    <div style="width: 30%;float: left;margin-left: 3%">
         <label style="width: 20%; float: left;line-height: 35px;" for="">Jornadas: </label>
         <input style="width: 80%; float: left;" class="form-control" value="{{$estudiante->jornada->descripcion}}" disabled>
     </div>
