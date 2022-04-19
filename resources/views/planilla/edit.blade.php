@@ -20,9 +20,9 @@ Editar Planilla
 								    </div>
 								<div class="x_content left">
 									<br />
-									<form action="{{route('planilla.edit',['id'=>$planilla->id])}}"  method="post"  enctype="multipart/form-data" id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
-									@method("PUT")   
-									@csrf
+									<form action="{{route("planilla.edit",["id"=>$planilla->id])}}"  method="post">
+										@method("PUT")
+										@csrf
 
 									   <div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Nombre de Planilla</label>
