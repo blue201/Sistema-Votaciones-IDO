@@ -14,10 +14,11 @@ class JornadaSeeder extends Seeder
     public function run()
     {
         $jornadas = [
+            'Extendida',
             'Matutina',
-            'Vespertina',
             'Nocturna',
             'SEMED',
+            'Vespertina'
         ];
 
         foreach ($jornadas as $jornada) {
