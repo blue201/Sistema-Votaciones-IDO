@@ -14,7 +14,7 @@
 <br>
 <p>
     denominada <strong>{{$ganador->name}}</strong> perteneciente a la modalidad de estudio <strong>{{$ganador->modalidads->descripcion}}</strong> la cual gano con el
-    <strong>{{$porcentaje}}%</strong> de los votos validos.
+    <strong>{{ number_format($porcentaje,2)}}%</strong> de los votos validos.
 </p>
 <br>
 <p>
