@@ -38,7 +38,8 @@ input[type=radio]:focus {
     <input style="text-align: center;font-size: 16px;width: 60%;float: left;" type="text" class="form-control" disabled value="{{$p->name}}">
     <img src="{{asset('images/imgplanilla/'.$p->foto)}}" style="float: right" width="40%" height="70px" alt="">
     <input style="text-align: center;font-size: 14px;width: 60%;float: left;" type="text" class="form-control" disabled value="{{$p->lema}}">
-    
+    <input style="text-align: center;font-size: 14px;" type="text" class="form-control" disabled value="{{$p->modalidads->descripcion}}">
+
     <img src="{{asset($p->imagen)}}" alt="" width="262px" height="200px">
 
     <input style="text-align: center;font-size: 14px;" type="text" class="form-control" disabled value="{{$p->nombre}}">
@@ -63,7 +64,11 @@ input[type=radio]:focus {
     </div>
 </form>
 @else
-Usted ya voto
+<center>
+  <div class="alert alert-success" style="font-size: 20px">
+    Usted ya voto
+  </div>
+</center>
 @endif
 
 

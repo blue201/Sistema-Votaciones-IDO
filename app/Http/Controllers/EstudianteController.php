@@ -94,5 +94,44 @@ class EstudianteController extends Controller
         return view('estudiantes/index')->with('estudiantes',$estudiante)->with('titulo','Voto de cada estudiante')->with('votacion','si voto');
     }
 
+    public function download()
+    {
+        $votos = Planilla::select(DB::raw('planillas.id as id, name, COUNT(id_planilla) as votos'))
+        ->leftjoin('votos','votos.id_planilla','=','planillas.id')
+        ->groupby('planillas.id')
+        ->get();
+
+        $max = 0;
+        $id = 0;
+        $suma = 0;
+
+        foreach ($votos as $voto) {
+            if($voto->votos > $max){
+                $max = $voto->votos;
+                $id = $voto->id;
+            }
+            $suma += $voto->votos;
+        }
+
+        $ganador = Planilla::findOrFail($id);
+
+        $porcentaje = ($max/$suma)*100;
+
+        $candidatos = Candidato::where('id_planilla', $id)->get();
+
+
+        $data = [
+            'titulo' => 'Styde.net',
+            'ganador' => $ganador,
+            'porcentaje' => $porcentaje,
+            'candidatos' => $candidatos,
+        ];
+
+
+        $pdf = \PDF::loadView('Reporte', $data);
+
+        return $pdf->download('Elecciones_'.date('m_d_Y').'.pdf');
+    }
+
 
 }

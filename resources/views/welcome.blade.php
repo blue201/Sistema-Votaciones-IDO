@@ -43,6 +43,8 @@ $suma=1;
 }
 ?>
 
+<a type="button" style="color: black" class="btn btn-info" href="{{Route('reporte')}}">Reporte</a>
+
 <div id="chart">
 </div>
 
