@@ -19,7 +19,6 @@ class CreatePlanillasTable extends Migration
             $table->string('lema');
             $table->string('foto');
            $table->string('propuesta');
-           $table->integer('votos')->default(0);
             $table->unsignedBigInteger('modalidad');
             $table->foreign('modalidad')->references('id')->on('modalidads');
             $table->timestamps();

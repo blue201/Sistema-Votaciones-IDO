@@ -57,6 +57,7 @@
                       <li><a href="{{route('estudiante.index')}}">Listado de Estudiantes</a></li>
                       <li><a href="{{route('estudiante.votaron')}}">Estudiantes ya votaron</a></li>
                       <li><a href="{{route('estudiante.sinvotar')}}">Estudiantes sin votar</a></li>
+                      <li><a href="{{route('estudiante.voto')}}">Voto del estudiante</a></li>
                     </ul>
                   </li>
                   @endcan

@@ -1,6 +1,6 @@
 @extends('plantilla.madre')
 @section('titulo')
-Estudiantes Registrados
+{{$titulo}}
 @stop
 @section('contenido')
 
@@ -21,7 +21,12 @@ Estudiantes Registrados
         <th scope="col" style="text-align: center">Jornada</th>
         <th scope="col" style="text-align: center">Modalidad</th>
         <th scope="col" style="text-align: center">Curso</th>
+        @if (isset($votacion))
+        <th scope="col" style="text-align: center">Hora de votacion</th>
+        <th scope="col" style="text-align: center">Voto por</th>
+        @else
         <th scope="col" style="text-align: center">Accion</th>
+        @endif
     </tr>
     </thead>
 
@@ -33,6 +38,10 @@ Estudiantes Registrados
             <td>{{$estudiante->jornada->descripcion}}</td>
             <td>{{$estudiante->modalidad->descripcion}}</td>
             <td>{{$estudiante->curso->descripcion}}</td>
+            @if (isset($votacion))
+            <td>{{$estudiante->planilla}}</td>
+            <td>{{$estudiante->hora_votacion}}</td>
+            @else
             <td>
                 @can('estudiante.show')
                     <center>
@@ -40,6 +49,7 @@ Estudiantes Registrados
                     </center>
                 @endcan
             </td>
+            @endif
         </tr>
     @endforeach
     </tbody>

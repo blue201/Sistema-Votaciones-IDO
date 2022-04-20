@@ -3,7 +3,17 @@
 Registro de Nueva Planilla
 @stop
 @section('contenido')
-
+@if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <!-- page content -->
 				<div class="">
 					<div class="clearfix"></div>
