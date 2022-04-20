@@ -7,6 +7,8 @@ use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\PlanillaController;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +50,8 @@ Route::middleware("auth")->group(function () {
     Route::post('planilla', [PlanillaController::class, 'store'])->name('planilla.store');
     Route::get('planilla/{id}', [PlanillaController::class, 'show'])->name('planilla.show');
     Route::get('planilla/{id}/edit', [PlanillaController::class, 'edit'])->name('planilla.edit');
-    Route::put('planilla/{id}', [PlanillaController::class, 'update'])->name('planilla.update');
-    Route::delete('planilla/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
+    Route::put('planilla/editar/{id}', [PlanillaController::class, 'update'])->name('planilla.update');
+    Route::delete('planilla/editar/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
     
     Route::get('precidentes', [FormularioController::class, 'index'])->name('planilla.index');
     Route::get('precidentes/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
@@ -68,6 +70,9 @@ Route::middleware("auth")->group(function () {
     Route::post('grupo', [CatalogoController::class, 'grupostore'])->name('grupo');
     Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidad');
     Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada');
+
+    Route::get('login2', [LoginController::class, 'index'])->name('login2');
+    Route::get('matricula', [LoginController::class, 'create'])->name('createlogin2');
 });
 
 

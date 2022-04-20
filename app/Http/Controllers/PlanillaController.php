@@ -77,14 +77,14 @@ class PlanillaController extends Controller
     public function show($id)
     {
         $candidatos = Candidato::where('id_planilla',$id)->get();
-
         return view('planilla/candidatos')->with('candidatos',$candidatos);
     }
 
     
     public function edit($id)
     {
-        //
+        $planilla = Planilla::findorfail($id);
+        return view('planilla/edit')->with('planilla',$planilla);
     }
 
     
