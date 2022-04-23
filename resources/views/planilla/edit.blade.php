@@ -5,6 +5,7 @@ Editar Planilla
 @section('contenido')
 
 <!-- page content  -->
+
 				<div class="">
 					<div class="clearfix"></div>
 					<div class="row">
@@ -41,7 +42,8 @@ Editar Planilla
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Logo </label>
 											<div class="col-md-6 col-sm-6 ">
-													<input type="file" name="foto"  placeholder="Agregar Foto" id="" accept="image/*">@if(old('foto')){{old('foto')}}@else{{ $planilla->foto }}@endif</input>
+													<input type="file" name="foto" onclick="hola"  placeholder="Agregar Foto" id="" accept="image/*">@if(old('foto')){{old('foto')}}@else{{ $planilla->foto }}@endif</input>
+													
 											</div>
 										</div>
 
@@ -62,8 +64,7 @@ Editar Planilla
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Propuesta </label>
 											<div class="col-md-6 col-sm-6 ">
-												
-													<input type="file" name="propuesta"  placeholder="Agregar propuesta" id="" accept="file/*">@if(old('propuesta')){{old('propuesta')}}@else{{ $planilla->propuesta }}@endif</input>
+											<input type="file" name="propuesta" class="text-center center-block file-upload"  placeholder="Agregar propuesta" id="" accept="file/*">@if(old('propuesta')){{old('propuesta')}}@else{{ $planilla->propuesta }}@endif</input>
 														
 											</div>
 										</div>
@@ -73,7 +74,7 @@ Editar Planilla
 											<div  class="col-md-6 col-sm-6 " >
 												<select name="modalidad" id="modalidad" class="form-control @error('modalidad') is-invalid @enderror">
 													 <option style="display: none" value="@if(old('modalidad')){{old('modalidad')}}@else{{$planilla->modalidad->id}}@endif" >{{$planilla->modalidad->descripcion}}</option>
-													@foreach ($modalidads as $c)
+													@foreach ($modalidad as $c)
 														@if ($c->id >0)
 														<option value="{{$c->descripcion}}">{{$c->descripcion}}</option>
 														@endif
@@ -87,8 +88,7 @@ Editar Planilla
 											<div class="col-md-6 col-sm-6 offset-md-4">
 												<button class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</button>
 												<button class="btn btn-primary" type="reset">Limpiar</button>
-												<button type="submit"  class="btn btn-success">Registrar</button>
-												
+												<button type="submit"  class="btn btn-success">Actualizar</button>
 											</div>
 										</div>
 									</form>

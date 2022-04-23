@@ -35,7 +35,7 @@ class EstudianteController extends Controller
         ->get();
         
         return view('elecciones')->with('planillas',$planillas);
-    }
+    } 
 
     public function calculo(Request $request){
 

@@ -42,7 +42,7 @@ Registro de Nueva Planilla
 													<span class="invalid-feedback" role="alert">
 														<i style="color: red">{{ $message }}</i>
 													</span>
-												@enderror
+												@enderror 
 											</div>
 										</div>
 										
@@ -83,7 +83,7 @@ Registro de Nueva Planilla
 											<label class="col-form-label col-md-3 col-sm-3 label-align">Modalidad </label>
 											<div  class="col-md-6 col-sm-6 " >
 												<select name="modalidad" id="modalidad" class="form-control @error('modalidad') is-invalid @enderror">
-													@foreach ($modalidads as $c)
+													@foreach ($modalidad as $c)
 														@if ($c->id >0)
 														<option value="{{$c->id}}">{{$c->descripcion}}</option>
 														@endif

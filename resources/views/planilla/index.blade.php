@@ -31,7 +31,7 @@ Planillas Registrados
     @foreach ($planillas as $planilla)
         <tr>
             <td>{{$planilla->name}}</td>
-            <td>{{$planilla->modalidads->descripcion}}</td>
+            <td>{{$planilla->lema}}</td>
             <td>{{$planilla->created_at}}</td>
             <td>
             <center><a type="button" href="archivo/{{$planilla->propuesta}}" class="btn btn-danger"><i class="fas fa-file-pdf"></i></a></center>

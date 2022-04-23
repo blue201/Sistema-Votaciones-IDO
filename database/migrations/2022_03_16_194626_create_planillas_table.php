@@ -18,9 +18,9 @@ class CreatePlanillasTable extends Migration
             $table->string('name')->unique();
             $table->string('lema');
             $table->string('foto');
-           $table->string('propuesta');
-            $table->unsignedBigInteger('modalidad');
-            $table->foreign('modalidad')->references('id')->on('modalidads');
+            $table->string('propuesta');
+            $table->unsignedBigInteger('id_modalidad');
+            $table->foreign('id_modalidad')->references('id')->on('modalidads');
             $table->timestamps();
         });
     }

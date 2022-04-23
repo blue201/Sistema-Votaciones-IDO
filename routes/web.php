@@ -50,7 +50,7 @@ Route::middleware("auth")->group(function () {
     Route::get('planilla/nuevo', [PlanillaController::class, 'create'])->name('planillaa.create');
     Route::post('planilla', [PlanillaController::class, 'store'])->name('planilla.store');
     Route::get('planilla/{id}', [PlanillaController::class, 'show'])->name('planilla.show');
-    Route::get('planilla/{id}/edit', [PlanillaController::class, 'edit'])->name('planilla.edit');
+    Route::get('planilla/edit/{id}', [PlanillaController::class, 'edit'])->name('planilla.edit');
     Route::put('planilla/editar/{id}', [PlanillaController::class, 'update'])->name('planilla.update');
     Route::delete('planilla/editar/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
     
@@ -72,7 +72,8 @@ Route::middleware("auth")->group(function () {
     Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidad');
     Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada');
 
-    //Route::get('login ', [LoginController::class, 'index'])->name('login');
+    Route::get('votar', [LoginController::class, 'index'])->name('votar');
+    Route::get('elejir', [LoginController::class, 'eleciones'])->name('eleccion.votar');
    // Route::get('votar/{dni}', [LoginController::class, 'consulta'])->name('votar.login');
 });
 

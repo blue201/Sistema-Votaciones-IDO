@@ -16,6 +16,18 @@ class LoginController extends Controller
         return view('auth/login2'); 
     }
 
+    public function elecciones(){
+        
+        $planillas = Planilla::join('candidatos','candidatos.id_planilla','=','planillas.id')
+        ->join('verificacion_planillas','verificacion_planillas.id_planilla','=','planillas.id')
+        ->where('verificacion_planillas.verificacion', 1)
+        ->where('candidatos.id_cargo',1)
+        ->select('planillas.*', 'candidatos.name AS nombre', 'candidatos.foto AS imagen')
+        ->get();
+        
+        return view('elecciones')->with('planillas',$planillas);
+    } 
+
     public function consulta($dni)
     {
         $User = User::findorfail($dni);

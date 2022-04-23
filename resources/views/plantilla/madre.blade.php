@@ -9,8 +9,6 @@
     <link rel="shortcut icon" href="{{ asset('images/img.png') }}" type="image/x-icon">
     <title>IDO|@yield('titulo')</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
@@ -34,6 +32,7 @@
 <link rel="stylesheet" href="sweetalert2.min.css">
 
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>
+
 
   </head>
 

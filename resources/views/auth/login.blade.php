@@ -13,7 +13,7 @@
               <h1>Bienvenido</h1>
             </div>
             
-            <div class="logo" style="background-image: url('images/img.png');""></div>
+            <div class="logo" style="background-image: url('images/img.png');"></div>
             
             <form method="POST" action="{{ route('login') }}">
               @csrf

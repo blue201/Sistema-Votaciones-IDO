@@ -17,18 +17,15 @@ class PlanillaController extends Controller
     public function index()
     {
         $planillas = Planilla::all();
-        $data = [
-            'planillas'=> $planillas,
-        ];
-        return view('planilla/index',$data);
+        return view('planilla/index')->with('planillas',$planillas);
     }
 
     
     public function create()
     {
         abort_if(Gate::denies('planillaa.create'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
-        $modalidads = DB::table('modalidads')->get();
-        return view('planilla/registro')->with('modalidads',$modalidads);
+        $modalidad = DB::table('modalidads')->get();
+        return view('planilla/registro')->with('modalidad',$modalidad);
     }
 
     
@@ -39,7 +36,7 @@ class PlanillaController extends Controller
             'lema' => 'required|string|max:100',
             'foto' => 'required|image|mimes:jpg,jpej,png,git,svg|max:2048',
             'propuesta' => 'required|file|mimes:pdf',
-            'modalidad' => 'required|exists:modalidads,id|unique:planillas,modalidad'
+            'modalidad' => 'required|exists:modalidads,id|unique:planillas,id_modalidad'
         ]);
   
         $planilla = new Planilla();
@@ -61,7 +58,7 @@ class PlanillaController extends Controller
             //$planilla ->foto =  $destimg . $imgname; guardar ruta e imagen
             $planilla ->foto = $imgname;
             $planilla ->lema = $request->lema;
-            $planilla ->modalidad = $request->modalidad;
+            $planilla ->id_modalidad = $request->modalidad;
             $planilla->propuesta =  $pdfname;
             $planilla->save();
 
@@ -84,11 +81,10 @@ class PlanillaController extends Controller
     
     public function edit($id)
     {
-        abort_if(Gate::denies('planilla.edit'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
-       // $modalidads = DB::table('modalidads'); 
-        $modalidads = Modalidad::all(); 
+        abort_if(Gate::denies('planilla.edit'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion')); 
+        $modalidad = Modalidad::all(); 
         $planilla = Planilla::findorfail($id); 
-        return view('planilla/edit')->with('planilla',$planilla)->with('modalidads',$modalidads);
+        return view('planilla/edit')->with('planilla',$planilla)->with('modalidad',$modalidad);
     }
 
     
