@@ -12,14 +12,19 @@ class LoginController extends Controller
     public function index()
     {
         
-        $matricula = Matricula::all();
-        return view('planilla/login')->with('matricula',$matricula); 
+        //$matricula = Matricula::all();
+        return view('auth/login2'); 
     }
 
-    public function create()
+    public function consulta($dni)
     {
-        $matricula = Matricula::all();
-        return $matricula;
+        $User = User::findorfail($dni);
+        return view('welcome');
+    }
+
+    public function create($id)
+    {
+        //$User = User::all();
     }
 
     /**

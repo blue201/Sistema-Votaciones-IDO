@@ -19,6 +19,8 @@
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{ asset('css/nprogress.css') }}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{ asset('css/green.css') }}" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="{{ asset('css/daterangepicker.css') }}" rel="stylesheet">
 
@@ -34,6 +36,7 @@
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>
 
   </head>
+
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -45,6 +48,18 @@
               </a>
             </div>
 
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+              </div>
+              <div class="profile_info">
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
             <!-- sidebar menu -->
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -93,34 +108,19 @@
                   <li><a href="{{route('modalidad')}}">Modalidad</a></li>
                   <li><a href="{{route('jornada')}}">Jornada</a></li>
                 </ul>
-                  </ul>
               </div>
-
             </div>
 
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
+            
             <!-- /menu footer buttons -->
           </div>
         </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
+ 
+         <!-- top navigation -->
+         <div class="top_nav">
             <div class="nav_menu">
                 <div class="nav toggle">
                   <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -151,33 +151,7 @@
           </div>
         <!-- /top navigation -->
 
-        <style>
-          .btn-nuevo{
-            background: #4792e2;
-          }
-          .btn-editar{
-            background: #92e3ee;
-          }
-          .btn-detalles{
-            background: #7be2c3;
-            content: " Detalles"
-          }
-          .btn-desactivar{
-            background: #f75666;
-          }
-          .btn-regresar{
-            background: #f8b6ed;
-          }
-          .btn-guardar{
-            background: #bae9f0;
-          }
-          .btn-activar{
-            background: #448edd;
-          }
-          .btn-limpiar{
-            background: #aff8bf;
-          }
-        </style>
+        
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -187,13 +161,9 @@
                 @yield('contenido')
               </div>
             </div>
-
-            
-
           </div>
         </div>
         <!-- /page content -->
-
       </div>
     </div>
 

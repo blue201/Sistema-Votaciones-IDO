@@ -20,12 +20,12 @@ Editar Planilla
 								    </div>
 								<div class="x_content left">
 									<br />
-									<form action="{{route("planilla.edit",["id"=>$planilla->id])}}"  method="post">
-										@method("PUT")
-										@csrf
+									<form action="{{route('planilla.update',['id'=>$planilla->id])}}"  method="post"  enctype="multipart/form-data" id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
+									@method("PUT")   
+									@csrf
 
 									   <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Nombre de Planilla</label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" >Nombre de Planilla</label> 
 											<div class="col-md-6 col-sm-6 ">
 											    <input name="name" type="text" required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre de Planilla" 
 												value="@if(old('name')){{old('name')}}@else{{$planilla->name}}@endif"></input>
@@ -39,13 +39,9 @@ Editar Planilla
 										</div>
 										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Logo</label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Logo </label>
 											<div class="col-md-6 col-sm-6 ">
-												
-													<input type="file" name="foto" placeholder="Agregar Foto" id="" accept="image/*">
-														
-													
-												
+													<input type="file" name="foto"  placeholder="Agregar Foto" id="" accept="image/*">@if(old('foto')){{old('foto')}}@else{{ $planilla->foto }}@endif</input>
 											</div>
 										</div>
 
@@ -53,7 +49,7 @@ Editar Planilla
 											<label class="col-form-label col-md-3 col-sm-3 label-align" >Lema </label>
 											<div class="col-md-6 col-sm-6 ">
 											    <textarea name="lema" type="text" required maxlength="100" class="form-control @error('lema') is-invalid @enderror" placeholder="Escriba su Lema" 
-												value="{{old('lema')}}"></textarea>
+												value="@if(old('lema')){{old('lema')}}@else{{$planilla->lema}}@endif" >@if(old('lema')){{old('lema')}}@else{{$planilla->lema}}@endif</textarea>
 												
 												@error('lema')
 													<span class="invalid-feedback" role="alert">
@@ -64,10 +60,10 @@ Editar Planilla
 										</div>
 										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Propuesta</label>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" >Agregar Propuesta </label>
 											<div class="col-md-6 col-sm-6 ">
 												
-													<input type="file" name="propuesta" placeholder="Agregar propuesta" id="" accept="file/*">
+													<input type="file" name="propuesta"  placeholder="Agregar propuesta" id="" accept="file/*">@if(old('propuesta')){{old('propuesta')}}@else{{ $planilla->propuesta }}@endif</input>
 														
 											</div>
 										</div>
@@ -86,9 +82,6 @@ Editar Planilla
 												
 											</div>
 										</div>
-									
-											
-										
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-4">
@@ -100,33 +93,9 @@ Editar Planilla
 										</div>
 									</form>
 								</div>
-
-											
-
-
-
-
-
-
-
-								
-
-						
-
-
-
-							
 							</div>
 						</div>
-
-				
-
-
-
 					</div>
 				</div>
 			</div>
-       
- <!-- /page content -->
-       
 @stop

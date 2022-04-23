@@ -34,10 +34,12 @@ Planillas Registrados
             <td>{{$planilla->modalidads->descripcion}}</td>
             <td>{{$planilla->created_at}}</td>
             <td>
-            <a href="archivo/{{$planilla->propuesta}}" target="blank_" class="btn btn-danger">VerDoc</button>
+            <center><a type="button" href="archivo/{{$planilla->propuesta}}" class="btn btn-danger"><i class="fas fa-file-pdf"></i></a></center>
             </td>
            <td>
-            <a type="button" href="{{Route('planilla.show',['id'=>$planilla->id])}}" class="btn btn-success">Candidatos</a>
+           <center>
+            <a type="button" href="{{Route('planilla.show',['id'=>$planilla->id])}}" class="btn btn-success"><i class="fas fa-user"></i></a>
+            </center>
             </td>
            
             <td>

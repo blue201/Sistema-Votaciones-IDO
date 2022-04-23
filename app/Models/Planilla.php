@@ -10,14 +10,14 @@ class Planilla extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',   
+        'id_modalidad',   
     ];
 
     public function planilla(){
         return $this->hasMany(Planilla::class);
     }
 
-    public function modalidads(){
-        return $this->belongsTo(Modalidad::class, 'modalidad', 'id');
+    public function modalidad(){
+        return $this->belongsTo(Modalidad::class, 'id_modalidad', 'id'); 
     }
 }

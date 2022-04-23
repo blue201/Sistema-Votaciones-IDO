@@ -16,4 +16,7 @@ class Modalidad extends Model
     public function estudiante(){
         return $this->hasMany(Estudiante::class);
     }
+    public function planilla(){
+        return $this->hasMany(Planilla::class);
+    }
 }

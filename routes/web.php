@@ -72,8 +72,8 @@ Route::middleware("auth")->group(function () {
     Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidad');
     Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada');
 
-    Route::get('login2', [LoginController::class, 'index'])->name('login2');
-    Route::get('matricula', [LoginController::class, 'create'])->name('createlogin2');
+    //Route::get('login ', [LoginController::class, 'index'])->name('login');
+   // Route::get('votar/{dni}', [LoginController::class, 'consulta'])->name('votar.login');
 });
 
 
