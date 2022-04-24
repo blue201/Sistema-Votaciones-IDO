@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Candidato;
+use App\Models\Planilla;
 use App\Models\CargoPolitico;
 use App\Models\verificacion_planilla;
 use Illuminate\Support\Facades\Gate;
@@ -82,9 +83,12 @@ class CandidatoController extends Controller
    
     public function edit($id)
     {
-       
-
-        return 'edit';
+        abort_if(Gate::denies('planilla.edit'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
+        $cargo_politicos = CargoPolitico::all();
+        $candidatos = Candidato::where('id_planilla',$id)->get();
+        $planillas = Planilla::all();
+        $planilla = Planilla::findorfail($id); 
+        return view('formularios/edit')->with('cargo_politicos',$cargo_politicos)->with('planillas',$planillas)->with('planilla',$planilla)->with('candidatos',$candidatos);
     }
 
    

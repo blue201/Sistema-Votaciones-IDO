@@ -121,8 +121,8 @@ box-shadow:inset;
 
 	<center>
  <div class="center-block col-md-8 col-xs-8">
-<form method="POST" action="{{ route('eleccion.votar') }}">
-@csrf
+<form  action="{{ route('eleccion.votar') }}">
+
 <div class="form-group">
     <label for="alumno"><font color="white">Tarjeta de identidad del Alumno</font></label>
     <input type="text" name="alumno" class="form-control" id="alumno"

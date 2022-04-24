@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Matricula;
+use App\Models\Modalidad;
+use App\Models\Planilla;
 use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
@@ -17,7 +19,7 @@ class LoginController extends Controller
     }
 
     public function elecciones(){
-        
+        $modalidads = Modalidad::all();
         $planillas = Planilla::join('candidatos','candidatos.id_planilla','=','planillas.id')
         ->join('verificacion_planillas','verificacion_planillas.id_planilla','=','planillas.id')
         ->where('verificacion_planillas.verificacion', 1)
@@ -25,7 +27,7 @@ class LoginController extends Controller
         ->select('planillas.*', 'candidatos.name AS nombre', 'candidatos.foto AS imagen')
         ->get();
         
-        return view('elecciones')->with('planillas',$planillas);
+        return view('elecciones')->with('planillas',$planillas)->with('modalidads',$modalidads);
     } 
 
     public function consulta($dni)

@@ -73,7 +73,7 @@ Route::middleware("auth")->group(function () {
     Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada');
 
     Route::get('votar', [LoginController::class, 'index'])->name('votar');
-    Route::get('elejir', [LoginController::class, 'eleciones'])->name('eleccion.votar');
+    Route::get('elejir', [LoginController::class, 'elecciones'])->name('eleccion.votar');
    // Route::get('votar/{dni}', [LoginController::class, 'consulta'])->name('votar.login');
 });
 

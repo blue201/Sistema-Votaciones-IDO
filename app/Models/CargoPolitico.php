@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class CargoPolitico extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nombre',   
+    ];
     
-    public function candidato(){
-        return $this->hasMany(Candidato::class);
+    public function cargopolitico(){
+        return $this->hasMany(CargoPolitico::class);
     }
 }

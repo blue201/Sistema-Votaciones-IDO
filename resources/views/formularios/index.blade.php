@@ -35,7 +35,7 @@ Candidatos Registrados
             <td>{{$candidato->planilla->name}}</td>
             <td>
             <center>
-                <a class="btn btn-warning" href="{{route('candidato.edit',['id'=>$candidato->id])}}">
+                <a class="btn btn-warning" href="{{route('candidato.edit',['id'=>$candidato->id_planilla])}}">
                     <i class="fa fa-edit"></i>
                 </a>
             </center>

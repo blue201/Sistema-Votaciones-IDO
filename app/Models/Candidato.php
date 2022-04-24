@@ -17,6 +17,10 @@ class Candidato extends Model
         'id_planilla',
     ];
 
+    public function candidato(){
+        return $this->hasMany(Candidato::class);
+    }
+
     public function planilla(){
         return $this->belongsTo(Planilla::class, 'id_planilla', 'id');
     }

@@ -33,29 +33,35 @@ Registro de Nuevos Candidatos
 									<form action="{{ route('candidato.store') }}" method="POST" enctype="multipart/form-data"  id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
 										@csrf
 										<Select required name="planilla" class="form-control">
-											<option style="display: none" value="">Seleccione la planilla</option>
+											<option style="display: none" value="">{{$planilla->name}}</option>
 											@foreach ($planillas as $p)
 												<option value="{{$p->id}}">{{$p->name}}</option>
 											@endforeach
 										</Select>
 										<br><br>
-										@foreach ($cargo_politicos as $c)
+										
+										@foreach ($candidatos as $c)
 										<div style="float: left; border-top-style: solid;
 										border-right-style: solid;
 										border-bottom-style: solid;
 										border-left-style: solid; width: 28%;margin-left: 2.5%;margin-right: 2.5%;margin-bottom: 5%;">
-
+											
 											<div class="col-8" >
-												<input required type="file" value="{{old('seleccionArchivos'.$c->id)}}" id="seleccionArchivos[{{$c->id}}]" name="seleccionArchivos{{$c->id}}" accept="image/*" name="imagen[{{$c->id}}]" style="font-size: 9px">
+												<input required type="file" value="{{old('seleccionArchivos'.$c->id)}}" id="seleccionArchivos[{{$c->id}}]" name="seleccionArchivos{{$c->id}}" accept="image/*" name="imagen[{{$c->id}}]" style="font-size: 9px"></input>
 												<!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
 												<br>
 													<div id="preview[{{$c->id}}]" style="width: 300px; height: 200px;">
-													<img src="{{asset('images/user.png')}}" style="width: 190px; height: 173px;">
+													<img src="{{asset($c->foto)}}" style="width: 190px; height: 173px;">
 													</div>
 											</div>
-											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->nombre}}">
-											<input style="text-align: center" name="nombre{{$c->id}}" value="{{old('nombre'.$c->id)}}" type="text" required maxlength="60" class="form-control" placeholder="Nombre Completo">
-											<input style="text-align: center" name="id{{$c->id}}" value="{{old('id'.$c->id)}}"  type="text" required maxlength="13" pattern="[0-9]{13}" class="form-control" placeholder="Identidad">
+											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->id_cargo}}">
+											<!--<input style="text-align: center" name="nombre" value="{{old('nombre'.$c->id)}}" type="text" required maxlength="60" class="form-control @error('nombre') is-invalid @enderror" placeholder="Nombre Completo"
+											value="@if(old('nombre')){{old('nombre')}}@else{{$c->name}}@endif">{{$c->name}}</input>-->
+											<input style="text-align: center" name="name" type="text" required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre de Planilla" 
+												value="@if(old('name')){{old('name')}}@else{{$c->name}}@endif"></input>
+											<!--<input style="text-align: center" name="id{{$c->id}}" value="{{old('name'.$c->name)}}"  type="text" required maxlength="13" pattern="[0-9]{13}" class="form-control" placeholder="Identidad">
+												--><input style="text-align: center" name="id" type="text" required maxlength="40" class="form-control @error('id') is-invalid @enderror" required maxlength="13" pattern="[0-9]{13}" placeholder=" Identidad " 
+												value="@if(old('id')){{old('id')}}@else{{$c->identidad}}@endif"></input>
 										</div>
 										<script>
 											document.getElementById("seleccionArchivos[{{$c->id}}]").onchange = function(e) {
