@@ -43,7 +43,7 @@ Route::middleware("auth")->group(function () {
     Route::post('candidatos', [CandidatoController::class, 'store'])->name('candidato.store');
     Route::get('candidatos/{id}', [CandidatoController::class, 'show'])->name('candidato.show');
     Route::get('candidatos/edit/{id}', [CandidatoController::class, 'edit'])->name('candidato.edit');
-    Route::put('candidatos/{id}', [CandidatoController::class, 'update'])->name('candidato.update');
+    Route::put('candidatos/editar/{id}', [CandidatoController::class, 'update'])->name('candidato.update');
     Route::delete('candidato/{id}', [CandidatoController::class, 'destroy'])->name('candidato.destroy');
 
     Route::get('planilla', [PlanillaController::class, 'index'])->name('planillaa.index');

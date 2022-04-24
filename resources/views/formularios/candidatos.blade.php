@@ -6,8 +6,7 @@ Candidatos a Elecciones
 
         <!-- page content -->
 
-            <div class="">
-              <div class="clearfix"></div>
+            
                 <div class="row">
                   <div class="x_panel">
                     <div class="x_content">
@@ -61,8 +60,6 @@ Candidatos a Elecciones
 
                     </div>
                   </div>
-              </div>
-            </div>
           <!-- /page content -->
 
 @stop

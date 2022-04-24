@@ -10,7 +10,8 @@ class Planilla extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_modalidad',   
+        'id_modalidad', 
+        'name', 
     ];
 
     public function planilla(){
@@ -19,5 +20,9 @@ class Planilla extends Model
 
     public function modalidad(){
         return $this->belongsTo(Modalidad::class, 'id_modalidad', 'id'); 
+    }
+
+    public function candidato(){
+        return $this->hasMany(Candidato::class);
     }
 }

@@ -53,7 +53,7 @@ class CandidatoController extends Controller
             $filename = time() . '.' . $img->getClientOriginalName();
             $uplosucess = $request->file('seleccionArchivos'.$c->id)->move($destimg, $filename);
             $candidato = new Candidato();
-            $candidato ->name = $request->input('nombre'.$c->id);
+            $candidato ->name = $request->input('nombre'.$c->id); 
             $candidato ->foto = 'images/imgcandidato/'.$filename;
             $candidato ->identidad = $request->input('id'.$c->id);
             $candidato ->id_cargo = $c->id;
@@ -84,17 +84,52 @@ class CandidatoController extends Controller
     public function edit($id)
     {
         abort_if(Gate::denies('planilla.edit'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
-        $cargo_politicos = CargoPolitico::all();
-        $candidatos = Candidato::where('id_planilla',$id)->get();
         $planillas = Planilla::all();
-        $planilla = Planilla::findorfail($id); 
-        return view('formularios/edit')->with('cargo_politicos',$cargo_politicos)->with('planillas',$planillas)->with('planilla',$planilla)->with('candidatos',$candidatos);
+        $cargo_politicos = CargoPolitico::all(); 
+        $planilla = Planilla::find($id);
+        $candidatos = Candidato::where('id_planilla',$id)->get();
+        return view('formularios/edit')->with('planilla',$planilla)->with('cargo_politicos',$cargo_politicos)->with('planillas',$planillas)->with('candidatos',$candidatos);
     }
 
    
     public function update(Request $request, $id)
     {
-        return 'update';
+      /* $cargos = CargoPolitico::findOrFail($c->id);
+
+        foreach ($cargos as $c) {
+            $request->validate([
+                'planilla' => 'required|unique:verificacion_planillas,id_planilla|exists:planillas,id',
+                'seleccionArchivos'.$c->id => 'required',
+            ]);
+        }
+
+    
+            
+         
+        foreach ($cargos as $c) {
+            
+            $img = $request->file('seleccionArchivos'.$c->id);
+            $destimg = 'images/imgcandidato/'; 
+            $filename = time() . '.' . $img->getClientOriginalName();
+            $uplosucess = $request->file('seleccionArchivos'.$c->id)->move($destimg, $filename);
+            $candidato = new Candidato();
+            $candidato ->name = $request->input('nombre'.$c->id); 
+            $candidato ->foto = 'images/imgcandidato/'.$filename;
+            $candidato ->identidad = $request->input('id'.$c->id);
+            $candidato ->id_cargo = $c->id;
+            $candidato ->id_planilla = $request->input('planilla');
+            $candidato->save();
+        }
+
+        $verificar = new verificacion_planilla();
+
+        $verificar->id_planilla = $request->input('planilla');
+        $verificar->verificacion = 1;
+        $verificar->save();
+
+        return redirect()->route('candidato.index')->with('mensaje','el profesor fue creado exitosamente');
+    */
+    return edit;
     }
 
    

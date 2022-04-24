@@ -1,12 +1,31 @@
 @extends('plantilla.madre')
 @section('titulo')
-Registro de Nuevos Candidatos
+Editar Candidatos de Planilla
 @stop
 @section('contenido')
 
 <!-- page content -->
-				<div class="">
-					<div class="clearfix"></div>
+<style>
+	#custom-button {
+  padding: 2px;
+  color: white;
+  background-color:#181d57;
+  border: 1px solid #000;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+#custom-button:hover {
+  background-color: #181d57;
+}
+
+#custom-text {
+  margin-left: 1px;
+  font-family: sans-serif;
+  
+  color: #aaa;
+}
+</style>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
@@ -30,39 +49,68 @@ Registro de Nuevos Candidatos
 										</ul>
 									</div>
 								@endif
-									<form action="{{ route('candidato.store') }}" method="POST" enctype="multipart/form-data"  id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
-										@csrf
+								
+									<form action="{{route('candidato.update',['id'=>$planilla->id])}}"  method="post" enctype="multipart/form-data"  id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
+									@method("PUT")   
+									@csrf 
+									
 										<Select required name="planilla" class="form-control">
-											<option style="display: none" value="">{{$planilla->name}}</option>
+											<option style="display: none" value="@if(old('planilla')){{old('planilla')}}@else{{$planilla->id}}@endif" >{{$planilla->name}}</option>
 											@foreach ($planillas as $p)
 												<option value="{{$p->id}}">{{$p->name}}</option>
 											@endforeach
 										</Select>
 										<br><br>
-										
 										@foreach ($candidatos as $c)
+										
 										<div style="float: left; border-top-style: solid;
 										border-right-style: solid;
 										border-bottom-style: solid;
 										border-left-style: solid; width: 28%;margin-left: 2.5%;margin-right: 2.5%;margin-bottom: 5%;">
 											
 											<div class="col-8" >
-												<input required type="file" value="{{old('seleccionArchivos'.$c->id)}}" id="seleccionArchivos[{{$c->id}}]" name="seleccionArchivos{{$c->id}}" accept="image/*" name="imagen[{{$c->id}}]" style="font-size: 9px"></input>
-												<!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
+											<input type="file" name="seleccionArchivos{{$c->id}}" id="real-file" hidden="hidden" />
+											</br>
+											<button type="button" id="custom-button">Imagen</button>
+											<span style="font-size:8px;" id="custom-text">{{$c->foto}}</span>
+
+											<!--<input required type="file"  id="seleccionArchivos[{{$c->id}}]" name="seleccionArchivos{{$c->id}}" accept="image/*" name="imagen[{{$c->id}}]" style="font-size: 9px"
+												value="@if(old('imagen'.$c->id_cargo)){{old('imagen'.$c->id_cargo)}}@else{{$c->foto}}@endif"></input>
+												 value="{{old('seleccionArchivos'.$c->id)}}" La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
 												<br>
 													<div id="preview[{{$c->id}}]" style="width: 300px; height: 200px;">
 													<img src="{{asset($c->foto)}}" style="width: 190px; height: 173px;">
 													</div>
 											</div>
-											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->id_cargo}}">
+											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->cargopolitico->nombre}}">
 											<!--<input style="text-align: center" name="nombre" value="{{old('nombre'.$c->id)}}" type="text" required maxlength="60" class="form-control @error('nombre') is-invalid @enderror" placeholder="Nombre Completo"
 											value="@if(old('nombre')){{old('nombre')}}@else{{$c->name}}@endif">{{$c->name}}</input>-->
-											<input style="text-align: center" name="name" type="text" required maxlength="40" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre de Planilla" 
-												value="@if(old('name')){{old('name')}}@else{{$c->name}}@endif"></input>
+											<input style="text-align: center" name="name{{$c->id_cargo}}" type="text" required maxlength="40" class="form-control" placeholder="Nombre de Planilla" 
+												value="@if(old('name'.$c->id_cargo)){{old('name'.$c->id_cargo)}}@else{{$c->name}}@endif"></input>
 											<!--<input style="text-align: center" name="id{{$c->id}}" value="{{old('name'.$c->name)}}"  type="text" required maxlength="13" pattern="[0-9]{13}" class="form-control" placeholder="Identidad">
-												--><input style="text-align: center" name="id" type="text" required maxlength="40" class="form-control @error('id') is-invalid @enderror" required maxlength="13" pattern="[0-9]{13}" placeholder=" Identidad " 
-												value="@if(old('id')){{old('id')}}@else{{$c->identidad}}@endif"></input>
+												--><input style="text-align: center" name="id{{$c->id_cargo}}" type="text" required maxlength="40" class="form-control" required maxlength="13" pattern="[0-9]{13}" placeholder=" Identidad " 
+												value="@if(old('id'.$c->id_cargo)){{old('id'.$c->id_cargo)}}@else{{$c->identidad}}@endif"></input>
 										</div>
+										<script type="text/javascript">
+											const realFileBtn = document.getElementById("real-file");
+											const customBtn = document.getElementById("custom-button");
+											const customTxt = document.getElementById("custom-text");
+
+											customBtn.addEventListener("click", function() {
+											realFileBtn.click();
+											});
+
+											realFileBtn.addEventListener("change", function() {
+											if (realFileBtn.value) {
+												customTxt.innerHTML = realFileBtn.value.match(
+												/[\/\\]([\w\d\s\.\-\(\)]+)$/
+												)[1];
+											} else {
+												customTxt.innerHTML = "No file chosen, yet.";
+											}
+											});
+
+										</script>
 										<script>
 											document.getElementById("seleccionArchivos[{{$c->id}}]").onchange = function(e) {
 											// Creamos el objeto de la clase FileReader
@@ -97,7 +145,7 @@ Registro de Nuevos Candidatos
 									<div class="">
 										<button class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</button>
 										<button class="btn btn-primary" type="reset">Limpiar</button>
-										<button type="submit"  class="btn btn-success">Registrar</button>
+										<button type="submit"  class="btn btn-success">Actualizar</button>
 										
 									</div>
 								</div>
@@ -108,8 +156,6 @@ Registro de Nuevos Candidatos
 						</div>
 
 					</div>
-				</div>
-			</div>
        
  <!-- /page content -->
        

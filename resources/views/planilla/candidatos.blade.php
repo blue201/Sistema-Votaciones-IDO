@@ -30,7 +30,7 @@ Listado de Candidatos
 											<div class="col-8" >
 												<br>
 													<div id="preview[{{$c->id}}]" style="width: 300px; height: 200px;">
-													<img src="{{asset($c->foto)}}" alt="">
+													<img src="{{asset($c->foto)}}" style="width: 190px; height: 173px;">
 													</div>
 											</div>
 											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->cargopolitico->nombre}}">
@@ -40,12 +40,7 @@ Listado de Candidatos
 									@endforeach
 						
 
-									<style>
-										img{
-											width: 250px;
-											height: 200px;
-										}
-									</style>
+								
 
 								</div>
 

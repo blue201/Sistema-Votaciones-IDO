@@ -88,7 +88,7 @@ class PlanillaController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) 
     {
 
         $planilla = Planilla::findOrFail($id);
