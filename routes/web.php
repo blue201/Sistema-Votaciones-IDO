@@ -63,7 +63,8 @@ Route::middleware("auth")->group(function () {
     Route::get('cargo', [CatalogoController::class, 'cargoindex'])->name('cargo');
     Route::get('curso', [CatalogoController::class, 'cursoindex'])->name('curso');
     Route::get('grupo', [CatalogoController::class, 'grupoindex'])->name('grupo');
-    Route::get('modalidad', [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     xcx::class, 'modalidadindex'])->name('modalidad');
+    Route::get('modalidad', [CatalogoController::class, 'modalidadindex'])->name('modalidad');
+    //Route::get('modalidad', [CatalogoController::class, 'modalidadindex'])->name('modalidad');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         xcx::class, 'modalidadindex'])->name('modalidad');
     Route::get('jornada', [CatalogoController::class, 'jornadaindex'])->name('jornada');
 
     Route::post('cargo', [CatalogoController::class, 'cargostore'])->name('cargo');

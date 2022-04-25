@@ -143,7 +143,7 @@ Editar Candidatos de Planilla
 								<div class="ln_solid" style="float: left"></div>
 								<div class="item form-group" style="float: left">
 									<div class="">
-										<button class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</button>
+										<a class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</a>
 										<button class="btn btn-primary" type="reset">Limpiar</button>
 										<button type="submit"  class="btn btn-success">Actualizar</button>
 										

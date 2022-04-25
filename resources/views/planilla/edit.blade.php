@@ -86,7 +86,7 @@ Editar Planilla
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-4">
-												<button class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</button>
+												<a class="btn btn-primary" href="{{route('candidato.index')}}" type="button">Cancelar</a>
 												<button class="btn btn-primary" type="reset">Limpiar</button>
 												<button type="submit"  class="btn btn-success">Actualizar</button>
 											</div>
