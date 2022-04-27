@@ -30,7 +30,7 @@ input[type=radio]:focus {
 <form method="post">
     @csrf
     <div style="float: left">
-        @foreach ($planillas as $p)
+@foreach ($planillas as $p)
     <div style="float: left; border-top-style: solid;
     border-right-style: solid;
     border-bottom-style: solid;
@@ -38,7 +38,7 @@ input[type=radio]:focus {
     <input style="text-align: center;font-size: 16px;width: 60%;float: left;" type="text" class="form-control" disabled value="{{$p->name}}">
     <img src="{{asset('images/imgplanilla/'.$p->foto)}}" style="float: right" width="40%" height="70px" alt="">
     <input style="text-align: center;font-size: 14px;width: 60%;float: left;" type="text" class="form-control" disabled value="{{$p->lema}}">
-    <input style="text-align: center;font-size: 14px;" type="text" class="form-control" disabled value="{{$p->modalidads->descripcion}}">
+    <input style="text-align: center;font-size: 14px;" type="text" class="form-control" disabled value="{{$p->modalidad->descripcion}}">
 
     <img src="{{asset($p->imagen)}}" alt="" width="262px" height="200px">
 

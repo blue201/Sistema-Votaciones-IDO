@@ -49,11 +49,10 @@ Editar Candidatos de Planilla
 										</ul>
 									</div>
 								@endif
-								
-									<form action="{{route('candidato.update',['id'=>$planilla->id])}}"  method="post" enctype="multipart/form-data"  id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
+									<form action="{{route('candidato.update',['id'=>$planilla->id])}}"  method="post"  enctype="multipart/form-data" id="demo-form2"  data-parsley-validate class="form-horizontal form-label-left">
 									@method("PUT")   
-									@csrf 
-									
+									@csrf
+									 
 										<Select required name="planilla" class="form-control">
 											<option style="display: none" value="@if(old('planilla')){{old('planilla')}}@else{{$planilla->id}}@endif" >{{$planilla->name}}</option>
 											@foreach ($planillas as $p)
@@ -69,7 +68,7 @@ Editar Candidatos de Planilla
 										border-left-style: solid; width: 28%;margin-left: 2.5%;margin-right: 2.5%;margin-bottom: 5%;">
 											
 											<div class="col-8" >
-											<input type="file" name="seleccionArchivos{{$c->id}}" id="real-file" hidden="hidden" />
+											<input type="file" id="seleccionArchivos[{{$c->id_cargo}}]" name="seleccionArchivos{{$c->id_cargo}}" accept="image/*" name="imagen[{{$c->id_cargo}}]" hidden="hidden" />
 											</br>
 											<button type="button" id="custom-button">Imagen</button>
 											<span style="font-size:8px;" id="custom-text">{{$c->foto}}</span>
@@ -91,28 +90,9 @@ Editar Candidatos de Planilla
 												--><input style="text-align: center" name="id{{$c->id_cargo}}" type="text" required maxlength="40" class="form-control" required maxlength="13" pattern="[0-9]{13}" placeholder=" Identidad " 
 												value="@if(old('id'.$c->id_cargo)){{old('id'.$c->id_cargo)}}@else{{$c->identidad}}@endif"></input>
 										</div>
-										<script type="text/javascript">
-											const realFileBtn = document.getElementById("real-file");
-											const customBtn = document.getElementById("custom-button");
-											const customTxt = document.getElementById("custom-text");
-
-											customBtn.addEventListener("click", function() {
-											realFileBtn.click();
-											});
-
-											realFileBtn.addEventListener("change", function() {
-											if (realFileBtn.value) {
-												customTxt.innerHTML = realFileBtn.value.match(
-												/[\/\\]([\w\d\s\.\-\(\)]+)$/
-												)[1];
-											} else {
-												customTxt.innerHTML = "No file chosen, yet.";
-											}
-											});
-
-										</script>
+										
 										<script>
-											document.getElementById("seleccionArchivos[{{$c->id}}]").onchange = function(e) {
+											document.getElementById("seleccionArchivos[{{$c->id_cargo}}]").onchange = function(e) {
 											// Creamos el objeto de la clase FileReader
 											let reader = new FileReader();
 
@@ -121,7 +101,7 @@ Editar Candidatos de Planilla
 
 											// Le decimos que cuando este listo ejecute el código interno
 											reader.onload = function(){
-												let preview = document.getElementById('preview[{{$c->id}}]'),
+												let preview = document.getElementById('preview[{{$c->id_cargo}}]'),
 														image = document.createElement('img');
 														
 												image.src = reader.result;
@@ -133,6 +113,7 @@ Editar Candidatos de Planilla
 											};
 											}
 										</script>
+										
 									@endforeach
 						
 
@@ -151,8 +132,29 @@ Editar Candidatos de Planilla
 								</div>
 
 							</form>
+
+										<script>
+											const realFileBtn = document.getElementById("seleccionArchivos[{{$c->id_cargo}}]");
+											const customBtn = document.getElementById("custom-button");
+											const customTxt = document.getElementById("custom-text");
+
+											customBtn.addEventListener("click", function() {
+											realFileBtn.click();
+											});
+
+											realFileBtn.addEventListener("change", function() {
+											if (realFileBtn.value) {
+												customTxt.innerHTML = realFileBtn.value.match(
+												/[\/\\]([\w\d\s\.\-\(\)]+)$/
+												)[1];
+											} else {
+												customTxt.innerHTML = "No file chosen, yet.";
+											}
+											});
+
+										</script>
 							
-							</div>
+						</div>
 						</div>
 
 					</div>

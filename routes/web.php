@@ -52,7 +52,7 @@ Route::middleware("auth")->group(function () {
     Route::get('planilla/{id}', [PlanillaController::class, 'show'])->name('planilla.show');
     Route::get('planilla/edit/{id}', [PlanillaController::class, 'edit'])->name('planilla.edit');
     Route::put('planilla/editar/{id}', [PlanillaController::class, 'update'])->name('planilla.update');
-    Route::delete('planilla/editar/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
+    Route::delete('planilla/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
     
     Route::get('precidentes', [FormularioController::class, 'index'])->name('planilla.index');
     Route::get('precidentes/nuevo', [FormularioController::class, 'create'])->name('planilla.create');

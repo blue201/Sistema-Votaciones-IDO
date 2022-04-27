@@ -97,6 +97,9 @@ box-shadow:inset;
         $alu=$datos["cedula_alumno"];
                   $nombre=$datos["nombre"];
       $voto=$datos["voto"];
+      
+
+        return view('/');
       }else {
         $acceso="denegado";
      }

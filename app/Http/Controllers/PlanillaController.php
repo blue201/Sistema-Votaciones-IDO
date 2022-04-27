@@ -39,10 +39,11 @@ class PlanillaController extends Controller
             'modalidad' => 'required|exists:modalidads,id|unique:planillas,id_modalidad'
         ]);
   
-        $planilla = new Planilla();
+        
 
         if($request->hasfile('foto'))
         {
+            $planilla = new Planilla();
             //imagen planilla
             $img = $request->file('foto');
             $destimg = 'images/imgplanilla/';
@@ -99,33 +100,53 @@ class PlanillaController extends Controller
             $archivo = $request->file('propuesta');
             $pdfname = time() . '-' . $archivo->getClientOriginalName();
             $archivo->move(public_path().'/archivo/',$pdfname);
-        }else { $pdfname =$planilla->propuesta;}
+            $planilla ->id = $request->id;
+            $planilla ->name = $request->name;
+            $planilla ->lema = $request->lema;
+            $planilla ->id_modalidad = $request->modalidad;
+            $planilla->propuesta =  $pdfname;
+            $planilla->save();
+            return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
+         
+        }else 
+        {
+            if($request->hasfile('foto')){
+                //imagen planilla
+                $img = $request->file('foto');
+                $destimg = 'images/imgplanilla/';
+                $imgname = time() . '-' . $img->getClientOriginalName();
+                $uplosucess = $request->file('foto')->move($destimg, $imgname);
+                $planilla ->id = $request->id;
+                $planilla ->name = $request->name;
+                $planilla ->foto = $imgname;
+                $planilla ->lema = $request->lema;
+                $planilla ->id_modalidad = $request->modalidad;
+                $planilla->save();
+                return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
+         
+            }else 
+            { 
+                $planilla ->id = $request->id;
+                $planilla ->name = $request->name;
+                $planilla ->lema = $request->lema;
+                $planilla ->id_modalidad = $request->modalidad;
+                $planilla->save();
+
+                return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
+         
+            }
+        }
 
 
         //validar imag
-        if($request->hasfile('foto')){
-            //imagen planilla
-            $img = $request->file('foto');
-            $destimg = 'images/imgplanilla/';
-            $imgname = time() . '-' . $img->getClientOriginalName();
-            $uplosucess = $request->file('foto')->move($destimg, $imgname);
-        }else { $imgname =$planilla->foto;}
+        
           
         
 
 
 
 
-            $planilla ->id = $request->id;
-            $planilla ->name = $request->name;
-            $planilla ->foto = $imgname;
-            $planilla ->lema = $request->lema;
-            $planilla ->id_modalidad = $request->modalidad;
-            $planilla->propuesta =  $pdfname;
-            $planilla->save();
-
-         return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
-         
+            
         
         
     }
