@@ -140,7 +140,7 @@ box-shadow:inset;
 
 <br>
  <div align="center">
- <font color="white" size="6" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font>		
+ <font color="black" size="6" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font>		
 			
 	</div>
 </div>

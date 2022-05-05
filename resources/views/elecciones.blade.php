@@ -26,7 +26,9 @@ input[type=radio]:focus {
 }
 
 </style>
-@if (auth()->user()->voto == 0)
+@foreach ($candidatos as $c)
+@if ($c->voto == 0)
+
 <form method="post">
     @csrf
     <div style="float: left">
@@ -70,6 +72,6 @@ input[type=radio]:focus {
   </div>
 </center>
 @endif
-
+@endforeach
 
 @stop

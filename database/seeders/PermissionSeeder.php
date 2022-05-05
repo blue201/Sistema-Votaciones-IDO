@@ -37,6 +37,7 @@ class PermissionSeeder extends Seeder
             'planillaa.index',
             'planillaa.create',
             'planilla.mostrar',
+            'administrador.index',
             
 
         ];

@@ -101,11 +101,24 @@
                       @endcan
                     </ul>
                   </li>
-                  <li><a href="{{route('cargo')}}">Cargo</a></li>
+                  <div class="menu_section">
+							<h3>Acceso</h3>
+              @can('administrador.index')
+							<ul class="nav side-menu">
+								<li><a><i class="fa fa-bug"></i> Administrador <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+									<li><a href="{{route('cargo')}}">Cargo</a></li>
                   <li><a href="{{route('curso')}}">Curso</a></li>
                   <li><a href="{{route('grupo')}}">Grupo</a></li>
                   <li><a href="{{route('modalidad')}}">Modalidad</a></li>
                   <li><a href="{{route('jornada')}}">Jornada</a></li>
+									</ul>
+								</li>
+								
+							</ul>
+              @endcan
+					</div>
+                  
                 </ul>
               </div>
             </div>

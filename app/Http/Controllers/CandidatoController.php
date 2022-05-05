@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Candidato;
 use App\Models\Planilla;
 use App\Models\CargoPolitico;
+use App\Models\Modalidad;
 use App\Models\verificacion_planilla;
 use Illuminate\Support\Facades\Gate;
 use Validator;
@@ -20,7 +21,7 @@ class CandidatoController extends Controller
         abort_if(Gate::denies('candidato.index'), redirect()->route('welcome')->with('denegar','No tiene acceso a esta seccion'));
         $candidatos = Candidato::all();
         $modalidad = Modalidad::all();
-        return view('formularios/index')->with('candidatos',$candidatos); 
+        return view('formularios/index')->with('candidatos',$candidatos)->with('modalidad',$modalidad); 
     }
 
    
@@ -36,7 +37,6 @@ class CandidatoController extends Controller
     {
 
         $cargos = CargoPolitico::all();
-
         foreach ($cargos as $c) {
             $request->validate([
                 'planilla' => 'required|unique:verificacion_planillas,id_planilla|exists:planillas,id',
@@ -44,9 +44,6 @@ class CandidatoController extends Controller
             ]);
         }
 
-    
-            
-         
         foreach ($cargos as $c) {
             
             $img = $request->file('seleccionArchivos'.$c->id);
@@ -60,7 +57,7 @@ class CandidatoController extends Controller
             $candidato ->id_cargo = $c->id;
             $candidato ->id_planilla = $request->input('planilla');
             $candidato->save();
-            return redirect()->route('candidato.index')->with('mensaje','el Candidato fue actualizado exitosamente');
+            return redirect()->route('candidato.index')->with('mensaje','el Candidato fue creado exitosamente');
         
         }
 
@@ -96,7 +93,9 @@ class CandidatoController extends Controller
    
     public function update(Request $request, $id)
     {
-       $candidato = Candidato::where('id_planilla',$id)->get();
+       //$candidato = Candidato::where('id_planilla',$id)->get();
+       $candidato = Candidato::where('id_planilla',$id)->update(['is_active' => false]);
+
        
         foreach ($candidato as $c) {
             if($request->hasfile('seleccionArchivos'.$c->id_cargo))
@@ -121,15 +120,16 @@ class CandidatoController extends Controller
             return redirect()->route('candidato.index')->with('mensaje','el candidato fue editado exitosamente');
             }
         }
-    
-    
     }
 
    
     public function destroy($id)
     {
+
         $candidatos = Candidato::find($id);
         $candidatos->delete();
-        return view('formularios/index')->with('mensaje','el candidato fue eliminado exitosamente');
+        $candidatos = Candidato::all();
+        $modalidad = Modalidad::all();
+        return view('formularios/index')->with('candidatos',$candidatos)->with('modalidad',$modalidad)->with('mensaje','el candidato fue eliminado exitosamente');
     }
 }

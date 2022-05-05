@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\FormularioController;
@@ -73,8 +74,12 @@ Route::middleware("auth")->group(function () {
     Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidad');
     Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada');
 
-    Route::get('votar', [LoginController::class, 'index'])->name('votar');
-    Route::get('elejir', [LoginController::class, 'elecciones'])->name('eleccion.votar');
+    Route::post('valida', [LoginController::class, 'index'])->name('votar.login');
+    Route::get('ogin', [LoginController::class, 'login2'])->name('mostrar.login');
+    Route::get('dni/{dni}', [LoginController::class, 'validar'])->name('dni.validar');
+    Route::get('bienvenido', [EstudianteController::class, 'welcome'])->name('welcome');
+    //Route::put('ido/votar/{dni}', [LoginController::class, 'update'])->name('votar.update');
+    //Route::get('elejir', [LoginController::class, 'elecciones'])->name('eleccion.votar');
    // Route::get('votar/{dni}', [LoginController::class, 'consulta'])->name('votar.login');
 });
 
@@ -82,3 +87,7 @@ Route::middleware("auth")->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('/', 'votar');
+Route::post('ingreso', [LoginController::class, 'store'])->name('votar.store');
+Route::get('votar', [LoginController::class, 'index'])->name('login.index');
+Route::get('elecciones', [EstudianteController::class, 'elecciones'])->name('elecciones');
