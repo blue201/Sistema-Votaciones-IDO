@@ -61,7 +61,17 @@ box-shadow:inset;
 
     
 
-
+@if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <div class="contenedor">
 	<br><br><br><br><br>
 <div class="container-fluid">
@@ -78,9 +88,9 @@ box-shadow:inset;
 <form action="{{ route('votar.store') }}" role="form" method="post">
 @csrf
   <div class="form-group">
-    <label for="identidad"><font color="white">Tarjeta de identidad del Alumno</font></label>
+    <label for="identidad"><font color="white" size="3">Tarjeta de identidad del Alumno</font></label>
     <input require type="text" name="identidad" class="form-control @error('identidad') is-invalid @enderror" id="identidad"
-           placeholder="Identidad del Alumno" value="{{old('identidad')}}">
+           placeholder="Identidad del Alumno sin Guiones"  required maxlength="13" pattern="[0-9]{13}" value="{{old('identidad')}}">
            @error('identidad')
                 <span class="invalid-feedback" role="alert">
                     <i style="color: red">{{ $message }}</i>
@@ -95,25 +105,17 @@ box-shadow:inset;
 <br>
 <br>
 <center><a href="{{route('login.index')}}"><button class="btn btn-warning">ADMINISTRADOR</button></a></center>
-
 <br>
  <div align="center">
-
-
-
-
+ <center><font color="white" size="5" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font></center>
+ 
 </div>
 </center>
 </div>
 </div>
 <script src="js/jquery-1.11.3.min.js"></script>
 
-
 <script src="js/bootstrap.js"></script>
 
-
-
-
-<center><font color="white" size="7" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font></center>
 </body>
 </html>

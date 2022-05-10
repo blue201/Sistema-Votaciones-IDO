@@ -43,7 +43,7 @@ class CandidatoController extends Controller
                 'seleccionArchivos'.$c->id => 'required',
             ]);
         }
-
+        for ( $i = 0; $i < 7; $i = $i + 1 ) {
         foreach ($cargos as $c) {
             
             $img = $request->file('seleccionArchivos'.$c->id);
@@ -59,10 +59,9 @@ class CandidatoController extends Controller
             $candidato->save();
             return redirect()->route('candidato.index')->with('mensaje','el Candidato fue creado exitosamente');
         
-        }
+        }}
 
         $verificar = new verificacion_planilla();
-
         $verificar->id_planilla = $request->input('planilla');
         $verificar->verificacion = 1;
         $verificar->save();

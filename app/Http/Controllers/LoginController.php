@@ -12,102 +12,8 @@ use Illuminate\Support\Facades\DB;
 class LoginController extends Controller
 {
    
-    public function update(Request $request, $dni) 
-    {
-
-        $user = User::findOrFail($dni);
-        return  $user;
-
-        /*//validar pdf
-        if($request->hasfile('propuesta')){
-            //pdf planilla
-            $archivo = $request->file('propuesta');
-            $pdfname = time() . '-' . $archivo->getClientOriginalName();
-            $archivo->move(public_path().'/archivo/',$pdfname);
-            $planilla ->id = $request->id;
-            $planilla ->name = $request->name;
-            $planilla ->lema = $request->lema;
-            $planilla ->id_modalidad = $request->modalidad;
-            $planilla->propuesta =  $pdfname;
-            $planilla->save();
-            return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
-         
-        }else 
-        {
-            if($request->hasfile('foto')){
-                //imagen planilla
-                $img = $request->file('foto');
-                $destimg = 'images/imgplanilla/';
-                $imgname = time() . '-' . $img->getClientOriginalName();
-                $uplosucess = $request->file('foto')->move($destimg, $imgname);
-                $planilla ->id = $request->id;
-                $planilla ->name = $request->name;
-                $planilla ->foto = $imgname;
-                $planilla ->lema = $request->lema;
-                $planilla ->id_modalidad = $request->modalidad;
-                $planilla->save();
-                return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
-         
-            }else 
-            { 
-                $planilla ->id = $request->id;
-                $planilla ->name = $request->name;
-                $planilla ->lema = $request->lema;
-                $planilla ->id_modalidad = $request->modalidad;
-                $planilla->save();
-
-                return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
-         
-            }*/
-    }
-
-    public function validar($dni){
-        
-        
-        return $dni;
-
-       /* $candidatos = Candidato::all()->where('id_planilla',$id);
-
-        $sql="SELECT * FROM users WHERE identidad = '$alumno' AND voto = '0'";
-        $resultado=mysqli_query ($cx,$sql);
-        $datos=mysqli_fetch_array($resultado);
-        $alu=$datos["identidad"];
-                $name=$datos["name"];
-        $voto=$datos["voto"];
-
-
-        if ($alumno==$alu) {
-            $_SESSION["name"]=$datos["name"];
-            $_SESSION["carrera"]=$datos["carrera"];
-            $_SESSION["identidad"]=$datos["identidad"];
-                $_SESSION["permiso"]="Acceso Permitido";
-
-        
-            <script>
-
-            window.location="{{route('elecciones')}}";
-            </script>
-
-        
-            //header("location: principal.php"); 
-        }else {
-            $acceso="denegado";
-        }
-        break;
-        <?php
- 
-			if ($acceso=="denegado") {
-			  echo "<font size='5' color='white'>".$_SESSION["name"]."<br> Usted ya realizo su voto</font>";
-			}
-			
-			
-			?>
-        }
-        }
-*/
-
-        
-    }
+   
+  
 
 
     public function index()
@@ -115,18 +21,7 @@ class LoginController extends Controller
         return view('auth/login'); 
     }
 
-    public function login2()
-    {
-        return view('auth/login2'); 
-    }
-
-
-
-    public function dni($dni)
-    {
-        return view('login2');
-        
-    }
+    
 
     public function elecciones(){
         $modalidads = Modalidad::all();
@@ -174,16 +69,15 @@ class LoginController extends Controller
             
                 //header("location: principal.php"); 
             }else {
-                return 'identidad no se encuentra registrada';
+                return view('votar')->with('identidad no se encuentra registrada');
             }
-            
+            return view('votar')->with('identidad no se encuentra registrada');
         }
+        return view('votar')->with('identidad no se encuentra registrada');
     }
-    public function show($id)
+    public function show()
     {
-        $matricula = Matricula::where('RNE_Alumno',$id)->get();
-
-        return $matricula;  
+        return view('votar');
     }
 
     
