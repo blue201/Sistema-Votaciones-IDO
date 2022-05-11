@@ -20,9 +20,8 @@ body{
 
 
 background-image: url(images/votos.png);
-
-
 background-size: 100%;
+background-repeat: no-repeat;
 
 
 }
@@ -36,8 +35,8 @@ margin: 50px auto;
 border-radius: 10px;
 margin-right: 25%;
 margin-left: 25%;
-width: 50%;
-height: 550px;
+width: 100% auto;
+height: 100%;
 
 
 
@@ -49,7 +48,8 @@ height: 550px;
 transition: .8s;
 background-color:rgba(0,0,0 ,.2);
 box-shadow:inset;
-   
+width: 100% auto;
+height: 100%;   
 
 }
 
@@ -73,7 +73,7 @@ box-shadow:inset;
         </div>
     @endif
 <div class="contenedor">
-	<br><br><br><br><br>
+	<br>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -84,7 +84,7 @@ box-shadow:inset;
 
 
 	<center>
- <div class="center-block col-md-8 col-xs-8">
+<div class="center-block col-md-8 col-xs-8">
 <form action="{{ route('votar.store') }}" role="form" method="post">
 @csrf
   <div class="form-group">
@@ -108,7 +108,7 @@ box-shadow:inset;
 <br>
  <div align="center">
  <center><font color="white" size="5" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font></center>
- 
+ <br>
 </div>
 </center>
 </div>
