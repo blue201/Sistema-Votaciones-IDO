@@ -67,7 +67,7 @@ class LoginController extends Controller
                 
                 return view('elecciones')->with('planillas',$planillas)->with('candidatos',$candidatos);
             
-                //header("location: principal.php"); 
+                //header("location: principal.php");  
             }else {
                 return view('votar')->with('identidad no se encuentra registrada');
             }

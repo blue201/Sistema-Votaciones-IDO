@@ -1,4 +1,4 @@
-@extends('plantilla.madre')
+@extends('plantilla.madre2')
 @section('titulo')
 Listado de Candidatos
 @stop
@@ -20,7 +20,7 @@ Listado de Candidatos
 								    </div>
 								<div class="x_content left">
 									<br />
-                                    @foreach ($candidatos as $c)
+                                    @foreach ($candidatos as $c) 
                                         
 										<div style="float: left; border-top-style: solid;
 										border-right-style: solid;
@@ -30,7 +30,7 @@ Listado de Candidatos
 											<div class="col-8" >
 												<br>
 													<div id="preview[{{$c->id}}]" style="width: 300px; height: 200px;">
-													<img src="{{asset($c->foto)}}" style="width: 190px; height: 173px;">
+													<center><img src="{{asset($c->foto)}}" style="width: 190px; height: 173px;"></center>
 													</div>
 											</div>
 											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->cargopolitico->nombre}}">
@@ -40,15 +40,13 @@ Listado de Candidatos
 									@endforeach
 						
 
-								
-
 								</div>
 
 											
 								<div class="ln_solid" style="float: left"></div>
 								<div class="item form-group" style="float: left">
 									<div class="">
-										<a class="btn btn-primary" href="{{route('planillaa.index')}}" type="button">Regresar</a>
+										<a class="btn btn-primary" href="{{route('planilla.create')}}" type="button">Regresar</a>
 										
 									</div>
 								</div>

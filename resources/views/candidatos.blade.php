@@ -20,7 +20,7 @@ Listado de Candidatos
 								    </div>
 								<div class="x_content left">
 									<br />
-                                    @foreach ($candidatos as $c)
+                                    @foreach ($candidatos as $c) 
                                         
 										<div style="float: left; border-top-style: solid;
 										border-right-style: solid;
@@ -30,7 +30,7 @@ Listado de Candidatos
 											<div class="col-8" >
 												<br>
 													<div id="preview[{{$c->id}}]" style="width: 300px; height: 200px;">
-													<img src="{{asset($c->foto)}}" alt="">
+													<center><img src="{{asset($c->foto)}}" style="width: 190px; height: 173px;"></center>
 													</div>
 											</div>
 											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->cargopolitico->nombre}}">
@@ -39,13 +39,6 @@ Listado de Candidatos
 										</div>
 									@endforeach
 						
-
-									<style>
-										img{
-											width: 250px;
-											height: 200px;
-										}
-									</style>
 
 								</div>
 

@@ -29,11 +29,11 @@ input[type=radio]:focus {
 @foreach ($candidatos as $c)
 @if ($c->voto == 0)
 
-<form method="post">
-    @csrf
-    <div style="float: left">
+<form method="post" action="{{ route('calculo',['id'=>$c->id] ) }} " > 
+		 @csrf
+    <div style="float: ring">
 @foreach ($planillas as $p)
-    <div style="float: left; border-top-style: solid;
+    <div style="float: ring; border-top-style: solid;
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid; width: 20%;margin-left: 2.5%;margin-right: 2.5%;margin-bottom: 5%;">
@@ -70,6 +70,10 @@ input[type=radio]:focus {
   <div class="alert alert-success" style="font-size: 20px">
     Usted ya voto
   </div>
+  <div class="">
+			<a class="btn btn-primary" href="{{route('votar.index')}}" type="button">Regresar</a>
+										
+ </div>
 </center>
 @endif
 @endforeach
