@@ -21,7 +21,6 @@ body{
 
 background-image: url(images/votos.png);
 background-size: 100%;
-background-color:rgba(0,0,0 ,.2);
 background-repeat: no-repeat;
 
 
@@ -38,6 +37,7 @@ margin-right: 25%;
 margin-left: 25%;
 width: 100% auto;
 height: 100% auto;
+aling: center;
 
 
 
@@ -79,7 +79,7 @@ height: 100% auto;
     <div class="container-fluid">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center"><font color="white" size="7" face="Algerian">SISTEMA DE Votación IDO</h1></font><br>
+            <h1 class="text-center"><font color="black" size="7" face="Algerian">SISTEMA DE Votación IDO</h1></font><br>
           </div>
         </div>
           <center>
@@ -87,7 +87,7 @@ height: 100% auto;
           <form action="{{ route('votar.store') }}" role="form" method="post">
             @csrf
             <div class="form-group">
-              <label for="identidad"><font color="white" size="3">Tarjeta de identidad del Alumno</font></label>
+              <label for="identidad"><font color="black" size="3">Tarjeta de identidad del Alumno</font></label>
               <input require type="text" name="identidad" class="form-control @error('identidad') is-invalid @enderror" id="identidad"
               placeholder="Identidad del Alumno sin Guiones"  required maxlength="13" pattern="[0-9]{13}" value="{{old('identidad')}}">
               @error('identidad')
@@ -104,7 +104,7 @@ height: 100% auto;
             <center><a href="{{route('login.index')}}"><button class="btn btn-warning">ADMINISTRADOR</button></a></center>
             </br>
           <div align="center">
-            <center><font color="white" size="5" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font></center>
+            <center><font color="black" size="5" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font></center>
             </br>
           </div>
         </div>
