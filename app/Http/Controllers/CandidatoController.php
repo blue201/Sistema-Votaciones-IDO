@@ -89,35 +89,36 @@ class CandidatoController extends Controller
    
     public function update(Request $request, $id)
     {
-       $candidatos = Candidato::all()->where('id_planilla',$id);
+        $candidatos = Candidato::all()->where('id_planilla',$id);
        
-       $cargos = CargoPolitico::all();
-       foreach ($candidatos as $c) {
-        if($request->hasfile('seleccionArchivos'.$c->id)){
-        $img = $request->file('seleccionArchivos'.$c->id);
-        $destimg = 'images/imgcandidato/'; 
-        $filename = time() . '.' . $img->getClientOriginalName();
-        $uplosucess = $request->file('seleccionArchivos'.$c->id)->move($destimg, $filename);
-        $candidato = Candidato::findOrFail($c->id);
-        $candidato ->name = $request->input('nombre'.$c->id); 
-        $candidato ->foto = 'images/imgcandidato/'.$filename;
-        $candidato ->identidad = $request->input('id'.$c->id);
-        $candidato ->id_cargo = $c->id;
-        $candidato ->id_planilla = $request->input('planilla');
-        $candidato->save();
-        return redirect()->route('candidato.index')->with('mensaje','el Candidato fue creado exitosamente');
-        }else{
-            foreach ($cargos as $c) {
-            $candidato = Candidato::findOrFail($c->id);
-            $candidato ->name = $request->input('nombre'.$c->id_cargo); 
-            $candidato ->identidad = $request->input('id'.$c->id_cargo);
-            $candidato ->id_cargo = $c->id_cargo;
-            $candidato ->id_planilla = $request->input('planilla');
-            $candidato->save();}
-            } 
-            return redirect()->route('candidato.index')->with('mensaje','el Candidato fue creado exitosamente');
-        
-    }
+        $cargos = CargoPolitico::all();
+        foreach ($candidatos as $c) {
+         if($request->hasfile('seleccionArchivos'.$c->id)){
+         $img = $request->file('seleccionArchivos'.$c->id);
+         $destimg = 'images/imgcandidato/'; 
+         $filename = time() . '.' . $img->getClientOriginalName();
+         $uplosucess = $request->file('seleccionArchivos'.$c->id)->move($destimg, $filename);
+         $candidato = Candidato::findOrFail($c->id);
+         $candidato ->name = $request->input('nombre'.$c->id); 
+         $candidato ->foto = 'images/imgcandidato/'.$filename;
+         $candidato ->identidad = $request->input('id'.$c->id);
+         $candidato ->id_cargo = $c->id;
+         $candidato ->id_planilla = $request->input('planilla');
+         $candidato->save();
+         }else{
+             
+             $candidato = Candidato::findOrFail($c->id);
+             $candidato ->name = $request->input('nombre'.$c->id_cargo); 
+             $candidato ->identidad = $request->input('id'.$c->id_cargo);
+             $candidato ->id_cargo = $c->id_cargo;
+             $candidato ->id_planilla = $request->input('planilla');
+             $candidato->save();
+         
+             } 
+            
+         
+     }
+     return redirect()->route('candidato.index')->with('mensaje','el Candidato fue creado exitosamente');
     }
 
    
