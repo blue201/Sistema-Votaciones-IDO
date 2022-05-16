@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Matricula;
 use App\Models\Modalidad;
+use App\Models\Candidato;
 use App\Models\Planilla;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -80,6 +81,12 @@ class LoginController extends Controller
         return view('votar');
     }
 
+    public function candidatos($id){
+
+        $candidatos = Candidato::where('id_planilla',$id)->get();
+
+        return view('candidatos')->with('candidatos',$candidatos);
+    }
     
     public function edit($id)
     {

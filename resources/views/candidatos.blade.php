@@ -30,7 +30,7 @@ Listado de Candidatos
 											<div class="col-8" >
 												<br>
 													<div id="preview[{{$c->id}}]" style="width: 300px; height: 200px;">
-													<center><img src="{{asset($c->foto)}}" style="width: 190px; height: 173px;"></center>
+													<img src="{{asset($c->foto)}}" style="width:60% ; height: 95% ;">
 													</div>
 											</div>
 											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->cargopolitico->nombre}}">

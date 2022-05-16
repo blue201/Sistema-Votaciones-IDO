@@ -36,7 +36,7 @@ Route::middleware("auth")->group(function () {
     Route::get('estudiante/sinvotar', [EstudianteController::class, 'sinvotar'])->name('estudiante.sinvotar');
     Route::get('estudiante/{id}', [EstudianteController::class, 'show'])->name('estudiante.ver')->where('id', '[0-9]+');
     Route::get('elecciones', [EstudianteController::class, 'elecciones'])->name('elecciones');
-    Route::get('elecciones/candidatos/{id}', [EstudianteController::class, 'candidatos'])->name('elecciones.candidatos');
+    //Route::get('elecciones/candidatos/{id}', [EstudianteController::class, 'candidatos'])->name('elecciones.candidatos');
     //Route::post('elecciones', [EstudianteController::class, 'calculo'])->name('calculo');
 
     Route::get('candidatos', [CandidatoController::class, 'index'])->name('candidato.index');
@@ -85,7 +85,7 @@ Route::middleware("auth")->group(function () {
 
 
 Auth::routes();
-
+Route::get('planilla/{id}', [ LoginController::class, 'candidatos'])->name('elecciones.candidato');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/', 'votar')->name('votar.index');;
 Route::post('ingreso', [LoginController::class, 'store'])->name('votar.store');

@@ -67,14 +67,15 @@ Editar Candidatos de Planilla
 										border-left-style: solid; width: 28%;margin-left: 2.5%;margin-right: 2.5%;margin-bottom: 5%;">
 
 											<div class="col-8" >
-												<input type="file" value="@if(old('seleccionArchivos{{$c->id_cargo}}')){{old('seleccionArchivos{{$c->id_cargo}}')}}@else{{$c->name}}@endif" id="seleccionArchivos[{{$c->id_cargo}}]" name="seleccionArchivos{{$c->id_cargo}}" accept="image/*" name="imagen[{{$c->id_cargo}}]" style="font-size: 9px"></INPUT>
+												<input type="file" value="{{old('seleccionArchivos'.$c->id_cargo)}}" id="seleccionArchivos[{{$c->id_cargo}}]" name="seleccionArchivos{{$c->id_cargo}}" accept="image/*" name="imagen[{{$c->id_cargo}}]" style="font-size: 9px"></INPUT>
 												<!-- La imagen que vamos a usar para previsualizar lo que el usuario selecciona -->
 												<br>
 													<div id="preview[{{$c->id_cargo}}]" style="width: 300px; height: 200px;">
-													<img src="{{asset('images/$c->foto')}}" style="width: 190px; height: 173px;">
-													</div>
+													<img src="@if(old('images/user.png')){{old('images/user.png')}}@else{{asset($c->foto)}}@endif " style="width: 190px; height: 173px;">
+													
+												</div>
 											</div>
-											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->nombre}}">
+											<input style="text-align: center" type="text" class="form-control" disabled value="{{$c->cargopolitico->nombre}}">
 											<input style="text-align: center" name="nombre{{$c->id_cargo}}" value="@if(old('nombre')){{old('nombre')}}@else{{$c->name}}@endif" type="text" required maxlength="60" class="form-control" placeholder="Nombre Completo">
 											<input style="text-align: center" name="id{{$c->id_cargo}}" value="@if(old('id')){{old('id')}}@else{{$c->identidad}}@endif"  type="text" required maxlength="13" pattern="[0-9]{13}" class="form-control" placeholder="Identidad">
 										</div>
@@ -119,16 +120,14 @@ Editar Candidatos de Planilla
 								</div>
 
 							</form>
-
-										<script>
+							
+								    <script>
 											const realFileBtn = document.getElementById("seleccionArchivos[{{$c->id_cargo}}]");
 											const customBtn = document.getElementById("custom-button");
 											const customTxt = document.getElementById("custom-text");
-
 											customBtn.addEventListener("click", function() {
 											realFileBtn.click();
 											});
-
 											realFileBtn.addEventListener("change", function() {
 											if (realFileBtn.value) {
 												customTxt.innerHTML = realFileBtn.value.match(
@@ -138,14 +137,9 @@ Editar Candidatos de Planilla
 												customTxt.innerHTML = "No file chosen, yet.";
 											}
 											});
-
-										</script>
-							
+									</script>
 						</div>
 						</div>
-
 					</div>
-       
  <!-- /page content -->
-       
 @stop
