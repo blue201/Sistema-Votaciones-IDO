@@ -47,7 +47,7 @@ Route::middleware("auth")->group(function () {
     Route::put('candidatos/editar/{id}', [CandidatoController::class, 'update'])->name('candidato.update');
     Route::delete('candidato/{id}', [CandidatoController::class, 'destroy'])->name('candidato.destroy');
 
-    Route::get('planilla', [PlanillaController::class, 'index'])->name('planillaa.index');
+    Route::get('planillas', [PlanillaController::class, 'index'])->name('planillas.index');
     Route::get('planilla/nuevo', [PlanillaController::class, 'create'])->name('planillaa.create');
     Route::post('planilla', [PlanillaController::class, 'store'])->name('planilla.store');
     Route::get('planilla/{id}', [PlanillaController::class, 'show'])->name('planilla.show');
@@ -55,7 +55,7 @@ Route::middleware("auth")->group(function () {
     Route::put('planilla/editar/{id}', [PlanillaController::class, 'update'])->name('planilla.update');
     Route::delete('planilla/{id}', [PlanillaController::class, 'destroy'])->name('planilla.destroy');
     
-    Route::get('precidentes', [FormularioController::class, 'index'])->name('planilla.index');
+    Route::get('precidentes', [FormularioController::class, 'index'])->name('precidente.index');
     Route::get('precidentes/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
     Route::get('precidentes/{id}', [FormularioController::class, 'show'])->name('planilla.mostrar');
 
@@ -85,7 +85,7 @@ Route::middleware("auth")->group(function () {
 
 
 Auth::routes();
-Route::get('planilla/{id}', [ LoginController::class, 'candidatos'])->name('elecciones.candidato');
+Route::get('elecciones/{id}', [ LoginController::class, 'candidatos'])->name('elecciones.candidato');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/', 'votar')->name('votar.index');;
 Route::post('ingreso', [LoginController::class, 'store'])->name('votar.store');

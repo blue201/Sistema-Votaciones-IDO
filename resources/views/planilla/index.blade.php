@@ -38,8 +38,8 @@ Planillas Registrados
             </td>
            <td>
            <center>
-            <a type="button" href="{{Route('planilla.show',['id'=>$planilla->id])}}" class="btn btn-success"><i class="fas fa-user"></i></a>
-            </center>
+            <a type="button" href="{{route('planilla.show',['id'=>$planilla->id])}}" class="btn btn-success"><i class="fas fa-user"></i></a>
+            </center> 
             </td>
            
             <td>

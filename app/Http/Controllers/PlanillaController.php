@@ -63,9 +63,9 @@ class PlanillaController extends Controller
             $planilla->propuesta =  $pdfname;
             $planilla->save();
 
-         return redirect()->route('planillaa.index')->with('mensaje','la planilla fue creado exitosamente');
+         return redirect()->route('planillas.index')->with('mensaje','la planilla fue creado exitosamente');
          
-        }else
+        }else 
         {
             return with('mensaje','error al crear planilla');
         }
@@ -75,7 +75,7 @@ class PlanillaController extends Controller
     
     public function show($id)
     {
-        $candidatos = Candidato::where('id_planilla',$id)->get();
+        $candidatos = Candidato::where('id_planilla',$id)->get(); 
         return view('planilla/candidatos')->with('candidatos',$candidatos);
     }
 
@@ -106,7 +106,7 @@ class PlanillaController extends Controller
             $planilla ->id_modalidad = $request->modalidad;
             $planilla->propuesta =  $pdfname;
             $planilla->save();
-            return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
+            return redirect()->route('planillas.index')->with('mensaje','la planilla fue editada exitosamente');
          
         }else 
         {
@@ -122,7 +122,7 @@ class PlanillaController extends Controller
                 $planilla ->lema = $request->lema;
                 $planilla ->id_modalidad = $request->modalidad;
                 $planilla->save();
-                return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
+                return redirect()->route('planillas.index')->with('mensaje','la planilla fue editada exitosamente');
          
             }else 
             { 
@@ -132,7 +132,7 @@ class PlanillaController extends Controller
                 $planilla ->id_modalidad = $request->modalidad;
                 $planilla->save();
 
-                return redirect()->route('planillaa.index')->with('mensaje','la planilla fue editada exitosamente');
+                return redirect()->route('planillas.index')->with('mensaje','la planilla fue editada exitosamente');
          
             }
         }
