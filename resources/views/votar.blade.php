@@ -19,8 +19,9 @@
 body{
 
 
-background-image: url(images/votos.png);
+background-image: url(images/voto.png);
 background-size: 100%;
+background-attachment: fixed;
 background-repeat: no-repeat;
 
 

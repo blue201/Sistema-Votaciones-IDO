@@ -86,7 +86,7 @@
                   @endcan
                   <li><a><i class="fa fa-edit"></i> Formularios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                   
+					<li><a href="{{route('estudiante.voto')}}">Voto del estudiante</a></li>
                       @can('candidato.index')
                       <li><a href="{{route('candidato.index')}}">Lista de Candidatos</a></li>
                       @endcan

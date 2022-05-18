@@ -22,7 +22,7 @@ input[type=radio]:checked {
 }
 
 input[type=radio]:focus {
-  outline-color: transparent;
+  outline-color: transparent; 
 }
 
 </style>
@@ -36,7 +36,7 @@ input[type=radio]:focus {
     <div style="float: left; border-top-style: solid; border-right-style: solid;border-bottom-style: solid; 
     border-left-style: solid; width: 45%;margin-left: 2%;margin-right: 3%;margin-bottom: 5%;">
     <input style="text-align: center;font-size: 16px;width: 60%;float: left;" type="text" class="form-control" disabled value="{{$p->name}}">
-    <img src="{{asset('images/imgplanilla/'.$p->foto)}}" style="float: right" width="40%" height="70%" alt="">
+    <img src="{{asset('images/imgplanilla/'.$p->foto)}}" style="float: right" width="30%" height="70%" alt="">
     <input style="text-align: center;font-size: 14px;width: 60%;float: left;" type="text" class="form-control" disabled value="{{$p->lema}}">
     <input style="text-align: center;font-size: 14px;" type="text" class="form-control" disabled value="{{$p->modalidad->descripcion}}">
 

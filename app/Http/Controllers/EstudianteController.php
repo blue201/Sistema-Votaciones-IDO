@@ -39,18 +39,30 @@ class EstudianteController extends Controller
 
     public function calculo(Request $request, $id){
 
-        //return $request;
-        //Voto::create([
-            //'id_user' => Auth()->user()->id,
-           // 'id_planilla' => $request->input('muhRadio'),
-        //]);
+        //return $request; 
+       
 
-        $estudiante = User::findOrFail($id);
-        $estudiante->voto = 1;
-        $estudiante->save();
+        $user = User::all()->where('id',$id);
 
+        foreach ($user as $c) {
+            $vuse= $c->id;
+
+            if ($vuse==null) {
+                return view('votar')->with('identidad no se encuentra registrada');
+            }else {
+                $voto=$c->voto;
+                Voto::create([
+                    'id_user' =>  $c->id,
+                    'id_planilla' => $request->input('muhRadio'),
+                ]);
+
+                $voto = User::findOrFail($id);
+                $voto->voto = 1;
+                $voto->save();
+            }
+           
+        }
         return redirect()->route('votar.index')->with('ha ejercido su voto');
-
     }
 
     public function candidatos($id){
