@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimum-scale=1.0">
 <title>Votación</title>
 
 
@@ -18,13 +18,13 @@
 
 body{
 
-
+margin: 0;
+padding: 0;
 background-image: url(images/voto.png);
-background-size: 100%;
-background-attachment: fixed;
+background-size: cover;
 background-repeat: no-repeat;
-
-
+background-attachment: fixed;
+background-position: center;
 }
 	
 .contenedor{
@@ -38,7 +38,6 @@ margin-right: 25%;
 margin-left: 25%;
 width: 100% auto;
 height: 100% auto;
-aling: center;
 
 
 
@@ -78,9 +77,9 @@ height: 100% auto;
 <div class="contenedor">
     </br>
     <div class="container-fluid">
-        <div class="row">
+        <div class="col">
           <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center"><font color="black" size="7" face="Algerian">SISTEMA DE Votación IDO</h1></font><br>
+            <h1 class="text-center"><font color="black" size="7vw" face="Algerian">SISTEMA DE Votación IDO</h1></font><br>
           </div>
         </div>
           <center>
@@ -88,7 +87,7 @@ height: 100% auto;
           <form action="{{ route('votar.store') }}" role="form" method="post">
             @csrf
             <div class="form-group">
-              <label for="identidad"><font color="black" size="3">Tarjeta de identidad del Alumno</font></label>
+              <label for="identidad"><font color="black" size="3%">Tarjeta de identidad del Alumno</font></label>
               <input require type="text" name="identidad" class="form-control @error('identidad') is-invalid @enderror" id="identidad"
               placeholder="Identidad del Alumno sin Guiones"  required maxlength="13" pattern="[0-9]{13}" value="{{old('identidad')}}">
               @error('identidad')
