@@ -93,8 +93,8 @@
                       @can('planilla.create')
                       <li><a  href="{{route('planilla.create')}}">Lista de Presidentes</a></li>
                       @endcan
-                      @can('planillaa.index')
-                      <li><a href="{{route('planillaa.index')}}">Lista de Planillas</a></li>
+                      @can('planilla.index')
+                      <li><a href="{{route('planilla.index')}}">Lista de Planillas</a></li>
                       @endcan
                     </ul>
                   </li>

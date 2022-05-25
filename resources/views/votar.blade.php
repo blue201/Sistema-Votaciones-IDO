@@ -24,7 +24,7 @@ background-image: url(images/voto.png);
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
-background-position: center;
+background-position: left;
 }
 	
 .contenedor{
@@ -45,9 +45,9 @@ height: 100% auto;
 }
 
 .contenedor:hover{
-
+  float: left;
 transition: .8s;
-background-color:rgba(0,0,0 ,.2);
+background-color:rgba(0,0,0 ,.8);
 box-shadow:inset;
 width: 100% auto;
 height: 100% auto;
@@ -79,7 +79,7 @@ height: 100% auto;
     <div class="container-fluid">
         <div class="col">
           <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center"><font color="black" size="7vw" face="Algerian">SISTEMA DE Votación IDO</h1></font><br>
+            <h1 class="text-right"><font color="white" size="7vw" face="Algerian">SISTEMA DE Votación IDO</h1></font><br>
           </div>
         </div>
           <center>
@@ -87,7 +87,7 @@ height: 100% auto;
           <form action="{{ route('votar.store') }}" role="form" method="post">
             @csrf
             <div class="form-group">
-              <label for="identidad"><font color="black" size="3%">Tarjeta de identidad del Alumno</font></label>
+              <label for="identidad"><font color="white" size="3%">Tarjeta de identidad del Alumno</font></label>
               <input require type="text" name="identidad" class="form-control @error('identidad') is-invalid @enderror" id="identidad"
               placeholder="Identidad del Alumno sin Guiones"  required maxlength="13" pattern="[0-9]{13}" value="{{old('identidad')}}">
               @error('identidad')
@@ -100,11 +100,10 @@ height: 100% auto;
               <input type ="reset"  class="btn btn-danger" name="boton" Value="Cancelar">
           </form>
             </br>
-            </br>
             <center><a href="{{route('login.index')}}"><button class="btn btn-warning">ADMINISTRADOR</button></a></center>
             </br>
           <div align="center">
-            <center><font color="black" size="5" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font></center>
+            <center><font color="white" size="5" face="Algerian">VOTACIONES <?php $Year = date("Y");echo "$Year";echo "\n";?></font></center>
             </br>
           </div>
         </div>

@@ -42,7 +42,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/" class="site_title">
+              <a href="{{route('welcome')}}" class="site_title">
                 <img width="50px" height="50px" src="{{ asset('images/img.png') }}" alt="">  <span>IDO</span>
               </a>
             </div>
