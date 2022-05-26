@@ -37,7 +37,7 @@
             
             
             <div class="other-options">
-              <div style="width: 100%" class="option" onclick="window.location='{{route('register')}}'" id="fPass"><p class="option-text">Registrar Estudiante</p></div>
+              <div style="width: 100%" class="option" onclick="window.location='{{route('votar.index')}}'" id="fPass"><p class="option-text">VOTAR</p></div>
             </div>
             
           </div>

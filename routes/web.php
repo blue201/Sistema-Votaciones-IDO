@@ -59,7 +59,6 @@ Route::middleware("auth")->group(function () {
     Route::get('precidentes/nuevo', [FormularioController::class, 'create'])->name('planilla.create');
     Route::get('precidentes/{id}', [FormularioController::class, 'show'])->name('planilla.mostrar');
 
-    Route::get('/', [EstudianteController::class, 'welcome'])->name('welcome');
 
     Route::get('cargo', [CatalogoController::class, 'cargoindex'])->name('cargo');
     Route::get('curso', [CatalogoController::class, 'cursoindex'])->name('curso');
