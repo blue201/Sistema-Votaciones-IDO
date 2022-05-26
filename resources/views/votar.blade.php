@@ -78,9 +78,11 @@ height: 100% auto;
     </br>
     <div class="container-fluid">
         <div class="col">
+        <center>
           <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-right"><font color="white" size="7vw" face="Algerian">SISTEMA DE Votación IDO</h1></font><br>
+            <font color="white" size="6%" face="Algerian">SISTEMA DE Votación IDO</font><br><br>
           </div>
+</center>
         </div>
           <center>
         <div class="center-block col-md-8 col-xs-8">
