@@ -15,8 +15,9 @@ class CargopoliticoSeeder extends Seeder
             'Secretario',
             'Tesorero',
             'Fiscal 1',
-            'Vocal',
             'Fiscal 2',
+            'Vocal 1',
+            'Vocal 2',
         ];
         
         foreach ($cargo_politicos as $CargoPolitico) {

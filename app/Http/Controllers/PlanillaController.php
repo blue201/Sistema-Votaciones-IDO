@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Planilla;
 use App\Models\Candidato;
 use App\Models\Modalidad;
+use App\Models\verificacion_planilla;
+use App\Models\Voto;
+use App\Models\User;
 use Validator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -154,6 +157,33 @@ class PlanillaController extends Controller
     public function destroy($id)
     {
         $planilla = Planilla::find($id);
+
+        $cand = Candidato::all()->where('id_planilla',$id); 
+        foreach ($cand as $c) {
+        $candidato = Candidato::findOrFail($c->id);
+        $candidato->delete();
+        }
+
+        $vot = Voto::all()->where('id_planilla',$id); 
+        foreach ($vot as $ca) {
+        $voto = Voto::findOrFail($ca->id);
+        $voto->delete();
+        }
+        
+        $ver = verificacion_planilla::all()->where('id_planilla',$id); 
+        foreach ($ver as $v) {
+        $veri = verificacion_planilla::findOrFail($v->id);
+        $veri->delete();
+        }
+
+        $us = User::all()->where('id_planilla',$id); 
+        foreach ($us as $s) {
+            $user = User::findOrFail($id);
+            $user->voto = 0;
+            $user->save();
+        }
+
+
         $planilla->delete();
         $planillas = Planilla::all();
         $data = [

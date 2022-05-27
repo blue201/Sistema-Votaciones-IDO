@@ -90,4 +90,13 @@ class ProfesorController extends Controller
         return redirect()->route('profesor.index')->with('mensaje','el profesor fue editado exitosamente');
     }
 
+
+    public function destroy($id)
+    {
+        $planilla = Profesor::find($id);
+        $planilla->delete();
+        $profesors = Profesor::all();
+        return view('profesor/index')->with('profesors',$profesors)->with('mensaje','La planilla fue eliminado exitosamente');
+    }
+
 }

@@ -46,8 +46,7 @@ Listado de Candidatos
 								<div class="ln_solid" style="float: left"></div>
 								<div class="item form-group" style="float: left">
 									<div class="">
-										<a class="btn btn-primary" href="{{route('elecciones')}}" type="button">Regresar</a>
-										
+										<a class="btn btn-primary" href="{{route('votar.index')}}" type="button">Regresar</a>
 									</div>
 								</div>
 							

@@ -27,6 +27,7 @@ Profesores Registrados
         <th scope="col" style="text-align: center">Cargo</th>
         <th scope="col" style="text-align: center">Funcion</th>
         <th scope="col" style="text-align: center">Accion</th>
+        <th scope="col" style="text-align: center">Eliminar</th>
     </tr>
     </thead>
 
@@ -39,12 +40,24 @@ Profesores Registrados
             <td>{{$profesor->user->user}}</td>
             <td>{{$profesor->cargo->descripcion}}</td>
             <td>{{$profesor->funcion}}</td>
+
             <td>
                 @can('profesor.edit')
                     <center>
                         <a type="button" class="btn btn-danger" href="{{route('profesor.edit',['id'=>$profesor->id])}}">Editar</a>
                     </center>
                 @endcan
+            </td>
+            <td>
+            <center>
+                <form action="{{route('profesor.destroy',['id'=>$profesor->id])}}" method="post">
+                     @method("delete")
+                     @csrf
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                </form>
+            </center>
             </td>
         </tr>
     @endforeach

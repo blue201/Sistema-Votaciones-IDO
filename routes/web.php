@@ -28,6 +28,7 @@ Route::middleware("auth")->group(function () {
     Route::get('profesor/{id}', [ProfesorController::class, 'show'])->name('profesor.ver')->where('id', '[0-9]+');
     Route::get('profesor/editar/{id}', [ProfesorController::class, 'edit'])->name('profesor.edit')->where('id', '[0-9]+');
     Route::put('profesor/editar/{id}', [ProfesorController::class, 'update'])->name('profesor.update')->where('id', '[0-9]+');
+    Route::delete('profesor/{id}', [ProfesorController::class, 'destroy'])->name('profesor.destroy');
     
     Route::get('estudiante', [EstudianteController::class, 'index'])->name('estudiante.index');
     Route::get('reporte', [EstudianteController::class, 'download'])->name('reporte');

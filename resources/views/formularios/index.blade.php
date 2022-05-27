@@ -22,7 +22,7 @@ Candidatos Registrados
         <th scope="col" style="text-align: center">Cargo Politico</th>
         <th scope="col" style="text-align: center">Planilla</th>
         <th scope="col" style="text-align: center">Editar</th>
-        <th scope="col" style="text-align: center">Eliminar</th>
+        <!--th scope="col" style="text-align: center">Eliminar</th-->
     </tr>
     </thead>
 
@@ -41,7 +41,7 @@ Candidatos Registrados
             </center>
             </td>
             <td>
-            <center>
+            <!--center>
                 <form action="{{route('candidato.destroy',['id'=>$candidato->id])}}" method="post"> 
                      @method("delete")
                      @csrf
@@ -49,7 +49,7 @@ Candidatos Registrados
                             <i class="fa fa-trash"></i>
                         </button>
                 </form>
-            </center>
+            </center-->
             
             </td>
         </tr>
