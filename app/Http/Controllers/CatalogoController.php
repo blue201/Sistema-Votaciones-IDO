@@ -15,7 +15,7 @@ class CatalogoController extends Controller
 {
 
     public function cargoindex(){
-        $cargo = Cargo::all();
+        $cargo = Cargo::all(); 
 
         return view('catalogo\cargo')->with('cargos',$cargo);
     }
@@ -29,7 +29,7 @@ class CatalogoController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        return redirect()->route('cargo')->with('mensaje','el cargo fue creado exitosamente');
+        return redirect()->route('cargo.index')->with('mensaje','el cargo fue creado exitosamente');
 
     }
 
@@ -48,7 +48,7 @@ class CatalogoController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        return redirect()->route('curso')->with('mensaje','el curso fue creado exitosamente');
+        return redirect()->route('curso.index')->with('mensaje','el curso fue creado exitosamente');
 
     }
 
@@ -67,7 +67,7 @@ class CatalogoController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        return redirect()->route('grupo')->with('mensaje','el grupo fue creado exitosamente');
+        return redirect()->route('grupo.index')->with('mensaje','el grupo fue creado exitosamente');
 
     }
 
@@ -86,7 +86,7 @@ class CatalogoController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        return redirect()->route('modalidad')->with('mensaje','el modalidad fue creado exitosamente');
+        return redirect()->route('modalidad.index')->with('mensaje','el modalidad fue creado exitosamente');
 
     }
 
@@ -105,7 +105,7 @@ class CatalogoController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        return redirect()->route('jornada')->with('mensaje','el jornada fue creado exitosamente');
+        return redirect()->route('jornada.index')->with('mensaje','el jornada fue creado exitosamente');
 
     }
 

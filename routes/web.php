@@ -61,18 +61,18 @@ Route::middleware("auth")->group(function () {
     Route::get('precidentes/{id}', [FormularioController::class, 'show'])->name('planilla.mostrar');
 
 
-    Route::get('cargo', [CatalogoController::class, 'cargoindex'])->name('cargo');
-    Route::get('curso', [CatalogoController::class, 'cursoindex'])->name('curso');
-    Route::get('grupo', [CatalogoController::class, 'grupoindex'])->name('grupo');
-    Route::get('modalidad', [CatalogoController::class, 'modalidadindex'])->name('modalidad');
+    Route::get('cargo', [CatalogoController::class, 'cargoindex'])->name('cargo.index');
+    Route::get('curso', [CatalogoController::class, 'cursoindex'])->name('curso.index');
+    Route::get('grupo', [CatalogoController::class, 'grupoindex'])->name('grupo.index');
+    Route::get('modalidad', [CatalogoController::class, 'modalidadindex'])->name('modalidad.index');
     //Route::get('modalidad', [CatalogoController::class, 'modalidadindex'])->name('modalidad');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         xcx::class, 'modalidadindex'])->name('modalidad');
-    Route::get('jornada', [CatalogoController::class, 'jornadaindex'])->name('jornada');
+    Route::get('jornada', [CatalogoController::class, 'jornadaindex'])->name('jornada.index');
 
-    Route::post('cargo', [CatalogoController::class, 'cargostore'])->name('cargo');
-    Route::post('curso', [CatalogoController::class, 'cursostore'])->name('curso');
-    Route::post('grupo', [CatalogoController::class, 'grupostore'])->name('grupo');
-    Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidad');
-    Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada');
+    Route::post('cargo', [CatalogoController::class, 'cargostore'])->name('cargo.store');
+    Route::post('curso', [CatalogoController::class, 'cursostore'])->name('curso.store');
+    Route::post('grupo', [CatalogoController::class, 'grupostore'])->name('grupo.store');
+    Route::post('modalidad', [CatalogoController::class, 'modalidadstore'])->name('modalidad.store');
+    Route::post('jornada', [CatalogoController::class, 'jornadastore'])->name('jornada.store');
 
     Route::post('valida', [LoginController::class, 'index'])->name('votar.login');
     Route::get('ogin', [LoginController::class, 'login2'])->name('mostrar.login');
