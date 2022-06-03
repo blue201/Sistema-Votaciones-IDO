@@ -87,9 +87,7 @@
                   @endcan
                   <li><a><i class="fa fa-edit"></i> Formularios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    <!-- @can('planilla.index')
-                      <li><a href="{{route('planilla.index')}}">Planilla IDO</a></li>
-                      @endcan-->
+                    
                       @can('candidato.index')
                       <li><a href="{{route('candidato.index')}}">Lista de Candidatos</a></li>
                       @endcan
